@@ -1,0 +1,22 @@
+.header {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .header form {
+    margin-top: 10px;
+  }
+  
+  .header input {
+    padding: 8px;
+    margin-right: 5px;
+  }
+  
+  .header button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
