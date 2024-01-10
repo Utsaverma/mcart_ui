@@ -3,7 +3,7 @@ import './UserDetails.css';
 
 const UserDetails = () => {
   // Your user details logic here (e.g., user name, profile image, etc.)
-  const userName = "John Doe";
+  const userName = "Utsav Verma";
 
   return (
     <div className="user-details">

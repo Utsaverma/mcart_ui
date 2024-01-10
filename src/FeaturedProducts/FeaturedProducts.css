@@ -1,6 +1,40 @@
+/* Hide default scrollbar */
 .featured-products {
-    /* Add styles for featured products section */
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  
+  overflow-x: auto;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.featured-products::-webkit-scrollbar {
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  display: none; 
+}
+
+.section-heading {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%; /* Take full width */
+  z-index: 1;
+}
+
+/* Rest of your styles remain the same */
+.featured-items {
+  display: flex;
+  white-space: nowrap;
+}
+
+.featured-item {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  width: 300px; /* Adjust the width of each item as needed */
+  vertical-align: top;
+}
+
+.featured-item img {
+  width: 100%;
+}

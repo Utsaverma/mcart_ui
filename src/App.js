@@ -1,30 +1,30 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes , Navigate} from 'react-router-dom';
 import Header from './Header/Header';
-import ProductList from './ProductList/ProductList';
 import Footer from './Footer/Footer';
-import UserDetails from './UserDetails/UserDetails'; 
-import FeaturedProducts from './FeaturedProducts/FeaturedProducts'; 
-import Categories from './Categories/Categories';
-import ItemsOnSale from './ItemsOnSale/ItemsOnSale';
+import HomePage from './HomePage/HomePage';
+import ProductsPage from './ProductPage/ProductPage';
+import OrderConfirmation from './OrderConfirmation/OrderConfirmation';
+import ComingSoon from './ComingSoon/ComingSoon';
+import Cart from './Cart/Cart';
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <div className="content">
-        <div className="sidebar">
-          <UserDetails />
-          <Categories />
-          <ItemsOnSale />
-        </div>
-        <div className="main-content">
-          <FeaturedProducts />
-          <ProductList />
-        </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/orderConfirm" element={<OrderConfirmation />} />
+          <Route path="/comingSoon" element={<ComingSoon />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 }
 

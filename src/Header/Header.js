@@ -1,20 +1,50 @@
-import React from 'react';
-import './Header.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Categories from '../Categories/Categories';
+import UserDetails from '../UserDetails/UserDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import './Header.css'; // General header styles
 
 const Header = () => {
-  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Handle search functionality here
-    // You can use state or other methods to manage search
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Function to handle search query change
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Function to handle search submit
+  const handleSearchSubmit = (event) => {
+    event.preventDefault(); // Prevent form submission (if within a form)
+    // Perform search operation with the searchQuery state value
+    console.log('Searching for:', searchQuery);
+    // Add your search logic here (e.g., API call, filtering data, etc.)
   };
 
   return (
     <header className="header">
-      <h1>Welcome to MCART</h1>
-      <form onSubmit={handleSearch}>
-        <input type="text" placeholder="Search for products..." />
-        <button type="submit">Search</button>
-      </form>
+      <div className="left-section">
+        <Categories />
+      </div>
+      <div className="center-section">
+        {/* Search form */}
+        <form onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            placeholder="Search for products..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div className="right-section">
+        <Link to="/cart" className="cart-icon-link">
+          <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
+        </Link>
+        <UserDetails />
+      </div>
     </header>
   );
 }

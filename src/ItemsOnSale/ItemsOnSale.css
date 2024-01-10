@@ -1,6 +1,37 @@
 .items-on-sale {
-    /* Add styles for items on sale section */
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.items-on-sale::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.section-heading {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%; /* Take full width */
+  z-index: 1;
+}
+
+.sale-item {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  width: 300px; /* Adjust the width of each item as needed */
+  vertical-align: top;
+}
+
+.sale-item img {
+  width: 100%; /* Make sure images fill their container */
+}
+
+.item-details {
+  padding: 10px;
+}
+
+

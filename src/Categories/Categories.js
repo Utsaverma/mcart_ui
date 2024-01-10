@@ -7,12 +7,15 @@ const Categories = () => {
 
   return (
     <div className="categories">
-      <h2>Categories</h2>
-      <ul>
-        {categories.map((category, index) => (
-          <li key={index}>{category}</li>
-        ))}
-      </ul>
+      {/* <h2>Categories</h2> */}
+      <div className="dropdown">
+        <button className="dropbtn">Categories</button>
+        <div className="dropdown-content">
+          {categories.map((category, index) => (
+            <a key={index} href="#">{category}</a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

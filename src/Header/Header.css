@@ -1,22 +1,38 @@
 .header {
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  .header form {
-    margin-top: 10px;
-  }
-  
-  .header input {
-    padding: 8px;
-    margin-right: 5px;
-  }
-  
-  .header button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+}
+
+.left-section, .right-section {
+  /* Adjust styles for left and right sections */
+  /* width:auto; */
+  display: contents;
+}
+
+.center-section {
+  flex: 1;
+  /* Adjust styles for center section */
+}
+
+/* Update the input width */
+.center-section input[type="text"] {
+  width: 400px; /* Adjust the width as desired */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* Add any other styles you need */
+}
+
+.center-section button {
+  /* Add styles for the search button */
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Add any other styles you need */
+}
