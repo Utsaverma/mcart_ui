@@ -1,14 +1,13 @@
 import React from 'react';
 import './UserDetails.css';
 
-const UserDetails = () => {
+const UserDetails = (props) => {
   // Your user details logic here (e.g., user name, profile image, etc.)
-  const userName = "Utsav Verma";
 
   return (
     <div className="user-details">
-      <p>Welcome, {userName}!</p>
-      {/* Add more user-related information */}
+      <p>Welcome, {props.user.name}</p>
+      <button onClick={props.signOut}>Sign out</button>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './Header.css'; // General header styles
 
-const Header = () => {
+const Header = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Function to handle search query change
@@ -43,7 +43,7 @@ const Header = () => {
         <Link to="/cart" className="cart-icon-link">
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
         </Link>
-        <UserDetails />
+        <UserDetails signOut={props.signOut} user={props.user}/>
       </div>
     </header>
   );
