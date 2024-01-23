@@ -7,7 +7,7 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import HomePage from './HomePage/HomePage';
-import ProductsPage from './ProductPage/ProductPage';
+import ProductPage from './ProductPage/ProductPage';
 import OrderConfirmation from './OrderConfirmation/OrderConfirmation';
 import ComingSoon from './ComingSoon/ComingSoon';
 import Cart from './Cart/Cart';
@@ -75,13 +75,13 @@ const App = () => {
             <Header signOut={()=>{}} user={currUser}/>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orderConfirm" element={<OrderConfirmation />} />
               <Route path="/comingSoon" element={<ComingSoon />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
     //     )

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// cart.js
+
 const initialState = {
     value: {}
   };
