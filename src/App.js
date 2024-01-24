@@ -15,6 +15,8 @@ import { update as userUpdate } from './reducers/userSlice';
 import { useDispatch } from 'react-redux';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Checkout } from './Checkout/Checkout';
 
 
 Amplify.configure(awsExports)
@@ -77,6 +79,7 @@ const App = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/orderConfirm" element={<OrderConfirmation />} />
               <Route path="/comingSoon" element={<ComingSoon />} />
               <Route path="*" element={<Navigate to="/" />} />

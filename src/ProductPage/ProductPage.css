@@ -78,3 +78,12 @@
 .listedPrice{
   text-decoration: line-through;
 }
+
+.quantitySelection {
+  display: inline-flex; 
+  align-items: center ;
+}
+
+.quantityDisp{
+  margin: 10px;
+}

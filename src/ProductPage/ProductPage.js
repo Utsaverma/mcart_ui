@@ -6,13 +6,18 @@ import './ProductPage.css'; // Import the CSS file
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCrown, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { getProducts } from '../reducers/productsSlice';
-import { useSelector } from 'react-redux';
+import { getCart, addItemToCart, removeItemFromCart } from '../reducers/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ProductPage = () => {
   // Logic to fetch and display products
   const { id } = useParams();
   const products = useSelector(getProducts);
+  const cart = useSelector(getCart);
   const [currProduct, setCurrProduct] = useState({});
+  const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if(id && products && products.filter){
@@ -22,6 +27,8 @@ const ProductPage = () => {
       fetch(`http://localhost:5000/searchById?id=${id}`)
       .then((response)=>response.json())
       .then((data)=>{
+        console.log(data)
+        // data.is_best_seller = true;
         setCurrProduct(data);
       })
       .catch((error)=>{
@@ -30,8 +37,47 @@ const ProductPage = () => {
     }
   }, [id]);
 
+
+  useEffect(()=>{
+    const itemAlreadyAvaialble = cart.find(obj => obj['asin'] === id);
+    if (itemAlreadyAvaialble) {
+      setQuantity(itemAlreadyAvaialble.quantity);
+    }
+    else{
+      setQuantity(0)
+    }
+  },[cart])
+
   const handleAddToCart = () => {
-    console.log('product added to cart');
+    const itemToAdd = {
+      asin: id,
+      title: currProduct.title,
+      price: currProduct.price,
+      list_price: currProduct.list_price,
+      img_url: currProduct.img_url,
+      quantity: 1
+    }
+    dispatch(addItemToCart(itemToAdd))
+  };
+
+  const incrementCounter = () => {
+    const itemToAdd = {
+      asin: id,
+      title: currProduct.title,
+      price: currProduct.price,
+      list_price: currProduct.list_price,
+      img_url: currProduct.img_url,
+      quantity: 1
+    }
+    dispatch(addItemToCart(itemToAdd));
+  };
+
+  const decrementCounter = () => {
+    const itemToAdd = {
+      asin: id,
+      quantity: 1
+    }
+    dispatch(removeItemFromCart(itemToAdd));
   };
 
   const renderStars = () => {
@@ -64,7 +110,6 @@ const ProductPage = () => {
             <span>Best Seller</span>
           </span>):null
         }
-        <p>here: {console.log(currProduct.is_best_seller)}</p>
         <img src={currProduct.img_url} alt={currProduct.title} />
         <div className="stars">{renderStars()}</div>
         <p>Available at: &nbsp; <span className='listedPrice'>${currProduct.list_price}</span> &nbsp; ${currProduct.price}</p>
@@ -76,7 +121,15 @@ const ProductPage = () => {
           <a href={currProduct.product_url} target='_blank'>click here</a>
         </p>
 
-        <button onClick={handleAddToCart}>Add to Cart</button>
+        {
+          !quantity ? <button onClick={handleAddToCart}>Add to Cart</button>
+          : 
+          <div className="quantitySelection">
+          <button onClick={decrementCounter}>-</button>
+          <h2 className="quantityDisp">{quantity}</h2>
+          <button onClick={incrementCounter}>+</button>
+        </div>
+        }
       </div>
     }
     </div>
