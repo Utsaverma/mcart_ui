@@ -1,6 +1,5 @@
 .checkout-container {
-    width: 50%;
-    margin: auto;
+    margin: 5%;
   }
   
   .address-section,
@@ -26,4 +25,52 @@
     border: none;
     cursor: pointer;
   }
-  
+
+  .address-selection{
+    text-align: left;
+    float: left;
+  }
+  .addressRadio{
+    width: max-content;
+  }
+  .addressLabel{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  .newAddressForm{
+    float: right;
+    width: 50%;
+  }
+  .newAdressLabel{
+    display: inline-block;
+    width: 25%;
+  }
+  .newAddressInput{
+    width: 75%;
+  }
+  .addressToast{
+    width: 28%;
+    border: 0px;
+  }
+  .toast-header{
+    color: green;
+    font-weight: 400;
+    border-bottom: unset;
+  }
+  .addressToast .toast-header .btn-close{
+    font-size: 10px;
+  }
+  .toastContainer .toastSubContainer{
+    position: absolute;
+    right: 0%;
+    top: 50%;
+  }
+  .proceedPaymentBtn .btn-disabled{
+    cursor: not-allowed !important;
+    pointer-events: unset !important;
+  }
+  .notlink{
+    color: white;
+    text-decoration: unset;
+  }

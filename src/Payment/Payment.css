@@ -1,0 +1,48 @@
+.paymentContainer{
+    margin-right: 0px;
+}
+.paymentMethodInputs{
+    display: inline-block;
+    width: 5%;
+}
+.paymentMethodLabels{
+    display: inline-block;
+}
+.paymentContainer{
+    text-align: left;
+    margin-left: 20px;
+}
+.paymentSubDetails{
+    padding-right: 20px;
+}
+.paymentSubDetails div label{
+    vertical-align: middle;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    text-align: left;
+}
+.submitPaymentBtn{
+    text-align: center;
+}
+.selectedAddress-payment{
+   font-weight: bold;
+  padding-top: 20px;
+}
+.cart-address-details{
+    margin-right: 0px;
+}
+.shippinglabel{
+    text-align: right;
+    font-weight: 700;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.paymentImages{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+.items-selected{
+    list-style: decimal;
+    text-align: left;
+}
