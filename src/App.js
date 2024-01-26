@@ -18,6 +18,7 @@ import '@aws-amplify/ui-react/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkout } from './Checkout/Checkout';
 import { Payment } from './Payment/Payment';
+import ProductList from './ProductList/ProductList';
 
 
 Amplify.configure(awsExports)
@@ -78,6 +79,7 @@ const App = () => {
             <Header signOut={()=>{}} user={currUser}/>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/products/:value/:key" element={<ProductList />} />
               <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />

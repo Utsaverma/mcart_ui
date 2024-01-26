@@ -18,17 +18,15 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
+    
     if(id && products && products.filter){
       setCurrProduct(products.filter(item => item.asin === id)[0]);
     }
-    else{
+    else if(id){
       fetch(`http://localhost:5000/searchById?id=${id}`)
       .then((response)=>response.json())
       .then((data)=>{
-        console.log(data)
-        // data.is_best_seller = true;
         setCurrProduct(data);
       })
       .catch((error)=>{
