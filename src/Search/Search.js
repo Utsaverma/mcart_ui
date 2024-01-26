@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import { useDispatch } from 'react-redux';
 import { update as ProductUpdate } from '../reducers/productsSlice';
@@ -10,23 +10,44 @@ export const Search = () =>{
     // const [searchData, setSearchData] = useState([]);
     const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(true);
+    const [abortController, setAbortController] = useState(null);
+
+    useEffect(() => {
+      return () => {
+        if (abortController) {
+          abortController.abort();
+        }
+      };
+    }, [abortController]);
   
     const fetchTitles = (value) => {
-      fetch(`http://localhost:5000/search?key=${value}`)
+      const newAbortController = new AbortController();
+      setAbortController(newAbortController);
+      fetch(`http://localhost:5000/search?key=${value}`, {
+        signal: newAbortController.signal,
+      })
       .then((response)=>response.json())
       .then((data)=>{
-        // setSearchData(data);
         dispatch(ProductUpdate(data));
         setDropDownResults(data.map(({ asin: id, title: name }) => ({ id, name })));
       })
       .catch((error)=>{
-        setError(error);
+        if (error.name === 'AbortError') {
+          console.log('Fetch aborted');
+        } else {
+          setError(error);
+        }
       })
-      
+      .finally(() => {
+        setAbortController(null);
+      });
     }
 
     const handleSearchChange = (value) => {
       setSearchQuery(value);
+      if (abortController) {
+        abortController.abort();
+      }
       fetchTitles(value);
       setShowModal(true);
     };
@@ -34,8 +55,7 @@ export const Search = () =>{
     const handleSearchSubmit = (event) => {
         event.preventDefault(); 
         console.log('Searching for:', searchQuery);
-        
-      };
+    };
 
     return(
         <div className="search-page">
@@ -48,7 +68,7 @@ export const Search = () =>{
                 />
                 <button type="submit">Search</button>
             </form>
-            {dropdownResults && dropdownResults.length > 0 && showModal &&<SearchResultsList results={dropdownResults} setShowModal={setShowModal}/>}
+            {dropdownResults && dropdownResults.length > 0 && showModal &&<SearchResultsList results={dropdownResults} setShowModal={setShowModal} setSearchQuery={setSearchQuery}/>}
         </div>
     )
 }

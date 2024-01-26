@@ -38,10 +38,10 @@ const Cart = () => {
 
   return (
     <div className="Cart-page">
-      {/* <div className="title">Checkout Items</div> */}
-      <div className="checkoutButton">
+      { cartItems.length !== 0 && <div className="checkoutButton">
         <Link to="/checkout"><button className="btn btn-primary">Proceed to checkout</button></Link>
         </div>
+      }
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
