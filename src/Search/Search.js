@@ -3,17 +3,21 @@ import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { update as ProductUpdate } from '../reducers/productsSlice';
+import { getProductsByTitle } from '../services/productServices';
+import { Button } from 'react-bootstrap';
+
 
 export const Search = () =>{
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [searchQuery, setSearchQuery] = useState('');
     const [dropdownResults, setDropDownResults] = useState([]);
-    // const [searchData, setSearchData] = useState([]);
+
     const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(true);
     const [abortController, setAbortController] = useState(null);
     const [reloadKey, setReloadKey] = useState(0);
+
 
     useEffect(() => {
       return () => {
@@ -23,31 +27,21 @@ export const Search = () =>{
       };
     }, [abortController]);
 
-    // useEffect(()=>{
-    //   navigate(`/products/${searchQuery}`);
-    // }, [reloadKey])
   
-    const fetchTitles = (value) => {
+    const fetchTitles = async (value) => {
+      if(abortController) {
+        abortController.abort();
+      }
+  
       const newAbortController = new AbortController();
       setAbortController(newAbortController);
-      fetch(`http://localhost:5000/search?key=${value}`, {
-        signal: newAbortController.signal,
-      })
-      .then((response)=>response.json())
-      .then((data)=>{
+  
+      const data = await getProductsByTitle(value, newAbortController);
+      
+      if (data) {
         dispatch(ProductUpdate(data));
         setDropDownResults(data.map(({ asin: id, title: name }) => ({ id, name })));
-      })
-      .catch((error)=>{
-        if (error.name === 'AbortError') {
-          console.log('Fetch aborted');
-        } else {
-          setDropDownResults([{'id': null, 'name': 'Something went wrong'}]);
-        }
-      })
-      .finally(() => {
-        setAbortController(null);
-      });
+      }
     }
 
     const handleSearchChange = (value) => {
@@ -56,32 +50,40 @@ export const Search = () =>{
       if (abortController) {
         abortController.abort();
       }
-      fetchTitles(value);
-      setShowModal(true);
+      if(value){
+        fetchTitles(value);
+        setShowModal(true);
+      }
+      else{
+        setShowModal(false);
+      }
     };
 
     const handleSearchClick = () => {
-        // event.preventDefault(); 
         setShowModal(false);
         setReloadKey((prevKey) => prevKey + 1);
         navigate(`/products/${searchQuery}/${reloadKey}`);
+    };
+
+    const handleEnterKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        handleSearchClick();
+      }
     };
     
 
     return(
         <div className="search-page">
-            
                 <input
                     type="text"
                     placeholder="Search for products..."
                     value={searchQuery}
                     onChange={(e) => handleSearchChange(e.target.value)}
+                    onKeyDown={handleEnterKeyPress}
                 />
-                <button onClick={handleSearchClick}>
-                  {/* <Link to={`/products/${searchQuery}`} key={reloadKey}> Search </Link> */}
-                  Search
-                  </button>
-            {/* </form> */}
+                { searchQuery ? 
+                <Button variant="primary" onClick={handleSearchClick}>Search</Button> 
+                : <Button variant="primary" disabled>Search</Button>}
             {dropdownResults && dropdownResults.length > 0 && showModal &&<SearchResultsList results={dropdownResults} setShowModal={setShowModal} setSearchQuery={setSearchQuery}/>}
         </div>
     )

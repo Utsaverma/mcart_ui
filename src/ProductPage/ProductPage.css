@@ -19,7 +19,8 @@
 
 .product-details-container img {
   max-width: 100%;
-  height: auto;
+  height: 220px;
+  width: 220px;
   margin-bottom: 20px;
 }
 

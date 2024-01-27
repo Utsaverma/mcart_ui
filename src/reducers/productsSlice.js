@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: {}
+    value: []
   };
 
 export const productsSlice = createSlice({
@@ -11,11 +11,14 @@ export const productsSlice = createSlice({
     update: (state, action) => {
       state.value = action.payload;
     },
+    append: (state, action) => {
+      state.value = state.value.concat(action.payload)
+    }
   },
 });
 
 
-export const { update } = productsSlice.actions;
+export const { update, append } = productsSlice.actions;
 
 export const getProducts = (state) => state.products.value;
 

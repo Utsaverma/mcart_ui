@@ -8,8 +8,9 @@ import { faStar, faCrown, faStarHalfAlt } from '@fortawesome/free-solid-svg-icon
 import { getProducts } from '../reducers/productsSlice';
 import { getCart, addItemToCart, removeItemFromCart } from '../reducers/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { getProductById } from '../services/productServices';
 
-const ProductPage = () => {
+const ProductPage = ({asin}) => {
   // Logic to fetch and display products
   const { id } = useParams();
   const products = useSelector(getProducts);
@@ -18,26 +19,31 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
 
+  const currId = asin ? asin : id
+
   useEffect(() => {
+    // when a particuar product is only loaded through route
     
-    if(id && products && products.filter){
-      setCurrProduct(products.filter(item => item.asin === id)[0]);
+    if(currId && products && products.filter){
+      setCurrProduct(products.filter(item => item.asin === currId)[0]);
     }
-    else if(id){
-      fetch(`http://localhost:5000/searchById?id=${id}`)
-      .then((response)=>response.json())
-      .then((data)=>{
-        setCurrProduct(data);
-      })
-      .catch((error)=>{
-        // setError(error);
-      })
+    else if(currId){
+      const fetchData = async () => {
+        try {
+          const data = await getProductById(currId);
+          setCurrProduct(data);
+        } catch (error) {
+          // Handle the error (e.g., show an error message to the user)
+        }
+      };
+  
+      fetchData();
     }
-  }, [id]);
+  }, [currId, asin]);
 
 
   useEffect(()=>{
-    const itemAlreadyAvaialble = cart.find(obj => obj['asin'] === id);
+    const itemAlreadyAvaialble = cart.find(obj => obj['asin'] === currId);
     if (itemAlreadyAvaialble) {
       setQuantity(itemAlreadyAvaialble.quantity);
     }
@@ -48,7 +54,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     const itemToAdd = {
-      asin: id,
+      asin: currId,
       title: currProduct.title,
       price: currProduct.price,
       list_price: currProduct.list_price,
@@ -60,7 +66,7 @@ const ProductPage = () => {
 
   const incrementCounter = () => {
     const itemToAdd = {
-      asin: id,
+      asin: currId,
       title: currProduct.title,
       price: currProduct.price,
       list_price: currProduct.list_price,
@@ -72,7 +78,7 @@ const ProductPage = () => {
 
   const decrementCounter = () => {
     const itemToAdd = {
-      asin: id,
+      asin: currId,
       quantity: 1
     }
     dispatch(removeItemFromCart(itemToAdd));
@@ -101,7 +107,7 @@ const ProductPage = () => {
   return (
     <div className="products-page">
       { currProduct && <div className="product-details-container">
-        <h2>{currProduct.title}</h2>
+        <h2 title={currProduct.title}> {currProduct.title?.length > 50 ? currProduct.title?.slice(0,50) + "..." : currProduct.title}</h2>
         {
         currProduct.is_best_seller ? (<span className="best-seller">
             <FontAwesomeIcon icon={faCrown} />
@@ -109,7 +115,7 @@ const ProductPage = () => {
           </span>):null
         }
         <img src={currProduct.img_url} alt={currProduct.title} />
-        <div className="stars">{renderStars()}</div>
+        <div className="stars">{currProduct.stars?renderStars(): "Not Rated"}</div>
         <p>Available at: &nbsp; <span className='listedPrice'>${currProduct.list_price}</span> &nbsp; ${currProduct.price}</p>
         <p>{currProduct.category_name} - {currProduct.sub_category_name}</p>
         <p>Reviews #: {currProduct.reviews}</p>

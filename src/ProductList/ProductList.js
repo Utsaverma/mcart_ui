@@ -1,45 +1,104 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProducts, append as appendProducts, update as updateProducts} from '../reducers/productsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { Row, Col, Button } from 'react-bootstrap';
+import ProductPage from '../ProductPage/ProductPage';
+import { Filters } from '../Filters/filters';
+import { getProductsByTitle, DEFAULT_START_INDEX, DEFAULT_SIZE } from '../services/productServices';
 import './ProductList.css';
 
-const DEFAULT_START_INDEX = 0
-const DEFAULT_SIZE = 20
+const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3
 
 const ProductList = () => {
+  const dispatch = useDispatch();
 
+  // const productsinStore = useSelector(getProducts);
+  const [products, setProducts] = useState([]);
   const { value, key } = useParams();
 
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState("");
+  // const [products, setProducts] = useState([]);
+  // const [error, setError] = useState("");
+
+  const [fullGroups, setFullGroups] = useState(0);
+  const [remainder, setRemainder] = useState(0);
+  const [abortController, setAbortController] = useState(null);
   const [startIndex, setStartIndex] = useState(DEFAULT_START_INDEX);
-  const [size, setSize] = useState(DEFAULT_SIZE);
+  const [showLoadMore, setShowLoadMore] = useState(true);
 
   useEffect(()=>{
-    console.log(value)
-    fetch(`http://localhost:5000/search?key=${value}&start=${startIndex}&size=${size}`)
-      .then((response)=>response.json())
-      .then((data)=>{
-        console.log(data)
-        setProducts(data)
-      })
-      .catch((error)=>{
-        setError("Something went wrong")
-      })
-  }, [value, key])
-  // You can simulate product data here or fetch it from an API
- 
+    setProducts([]);
+    loadProducts(true);
+  }, [value]);
 
-  return (
+  useEffect(()=>{
+   setFullGroups(Math.floor(products.length / NUMBER_OF_ELEMENTS_AT_EACH_ROW));
+   setRemainder(products.length % NUMBER_OF_ELEMENTS_AT_EACH_ROW);
+  }, [products]);
+
+  const loadProducts = async (init=false) =>{
+    // console.log(init)
+    console.log(startIndex);
+    if(init===true){
+      setStartIndex(DEFAULT_SIZE);
+    }
+    else{
+      setStartIndex(prevStartIndex => prevStartIndex + DEFAULT_SIZE);
+    }
+    
+    if(abortController) {
+      abortController.abort();
+    }
+    const newAbortController = new AbortController();
+    setAbortController(newAbortController);
+    
+    const data = await getProductsByTitle(value, newAbortController, startIndex);
+    if (data) {
+      if(init===true){
+        dispatch(updateProducts(data));
+        setProducts(data);
+      }
+      else{
+        dispatch(appendProducts(data));
+        setProducts([...products, ...data.filter(item2 => !products.some(item1 => item1.asin === item2.asin))])
+      }
+      if(data.length < DEFAULT_SIZE){
+        setShowLoadMore(false);
+      }
+    }
+  }
+    return (
     <div className="product-list">
-      <h2>Products</h2>
-      {/* <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <span>{product.name}</span>
-            <span>{product.price}</span>
-          </li>
-        ))}
-      </ul> */}
+      {
+        products.length && <>
+          <Filters/>
+          <div className="productsListContainer">
+          {[...Array(fullGroups)].map((_, groupIndex) => (
+            <Row key={groupIndex}>
+              {[...Array(NUMBER_OF_ELEMENTS_AT_EACH_ROW)].map((_, innerIndex) => (
+                <Col key={groupIndex * NUMBER_OF_ELEMENTS_AT_EACH_ROW + innerIndex}>
+                  <ProductPage  asin={products[groupIndex * NUMBER_OF_ELEMENTS_AT_EACH_ROW + innerIndex]['asin']}/>
+                </Col>
+              ))}
+            </Row>
+          ))}
+          {remainder > 0 && (
+            <Row>
+              {[...Array(remainder)].map((_, remainderIndex) => (
+                <Col key={fullGroups * 3 + remainderIndex}>
+                  <ProductPage asin={products[fullGroups * 3 + remainderIndex]['asin']} />
+                </Col>
+              ))}
+              {[...Array(NUMBER_OF_ELEMENTS_AT_EACH_ROW - remainder)].map((_, remainderIndex) => (
+                <Col></Col>
+              ))}
+            </Row>
+          )}
+        </div>
+        {showLoadMore && <Button variant="primary" onClick={loadProducts}> Load More </Button>}
+      </>
+    }
+      
     </div>
   );
 }
