@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { getCart, emptyCart } from '../reducers/cartSlice';
 import { getpaymentDetails } from '../reducers/paymentDetailsSlice';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const OrderConfirmation = () => {
 
@@ -34,11 +35,17 @@ const OrderConfirmation = () => {
     <div className="OrderConfirmation-page">
       <h2>Your order has been placed</h2>
       <CartAddressSummary cartItems={localCartItems}/>
-      <h2>Total amount paid ${paymentDetails.amount} via {paymentDetails.method} payment</h2>
-
-      <div className="more-details"onClick={handleShow}>
+      <h2>Total amount paid ${paymentDetails.amount} via {paymentDetails.method} payment <span className="more-details"onClick={handleShow}>
         more details
-      </div>
+      </span></h2>
+
+      
+      <Link to="/">
+        <Button>
+          Back to Shopping
+        </Button>
+      </Link>
+
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header>
           <Modal.Title>Payment Details</Modal.Title>
@@ -102,9 +109,6 @@ const OrderConfirmation = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>

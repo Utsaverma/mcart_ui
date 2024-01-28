@@ -15,7 +15,8 @@ const Header = (props) => {
     <header className="header">
       <div className="left-section">
         <Link to="/"> Home </Link>
-        <Categories />
+        &nbsp; &nbsp;
+        <Link to="/category">Category </Link>
       </div>
       <div className="center-section">
         <Search/>

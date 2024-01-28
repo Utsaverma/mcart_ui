@@ -19,6 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkout } from './Checkout/Checkout';
 import { Payment } from './Payment/Payment';
 import ProductList from './ProductList/ProductList';
+import Categories from './Categories/Categories';
 
 
 Amplify.configure(awsExports)
@@ -85,6 +86,7 @@ const App = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/paymentPage" element={<Payment/>} />
               <Route path="/orderConfirm" element={<OrderConfirmation />} />
+              <Route path="/category" element={<Categories />} />
               <Route path="/comingSoon" element={<ComingSoon />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

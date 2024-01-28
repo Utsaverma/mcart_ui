@@ -28,6 +28,7 @@ const ProductPage = ({asin}) => {
       setCurrProduct(products.filter(item => item.asin === currId)[0]);
     }
     else if(currId){
+
       const fetchData = async () => {
         try {
           const data = await getProductById(currId);

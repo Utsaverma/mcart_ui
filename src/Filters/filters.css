@@ -1,0 +1,17 @@
+.genderRadio, .priceSort{
+    display: inline-block;
+    width: 20px;;
+}
+.genderLabel,.sortLabel{
+    display: inline-block;
+}
+.genderSelection, .priceSortContainer{
+    display: inline-block;
+    margin-left: 20px;
+}
+.genderSelection span, .priceSortContainer span{
+    font-weight: 700;
+}
+.clearFilters{
+    float: right;
+}
