@@ -56,7 +56,7 @@ export const Payment = () =>{
     
     };
     return (
-    <div>
+    <div className="minHeight">
         <CartAddressSummary cartItems={cartItems}/>
         <br/>
         <div>
