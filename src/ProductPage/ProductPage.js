@@ -5,27 +5,47 @@ import { useParams } from 'react-router-dom';
 import './ProductPage.css'; // Import the CSS file
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCrown, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { getProducts } from '../reducers/productsSlice';
+import { getProducts, getFeaturedProducts, getSaleProducts } from '../reducers/productsSlice';
 import { getCart, addItemToCart, removeItemFromCart } from '../reducers/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductById } from '../services/productServices';
 
-const ProductPage = ({asin}) => {
+const ProductPage = ({asin, view}) => {
   // Logic to fetch and display products
   const { id } = useParams();
-  const products = useSelector(getProducts);
+  const searchedproducts = useSelector(getProducts);
+  const saleProducts = useSelector(getSaleProducts);
+  const featuredProducts = useSelector(getFeaturedProducts);
   const cart = useSelector(getCart);
   const [currProduct, setCurrProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
+  const [maxTitleLength, setMaxTitleLength] = useState(50);
   const dispatch = useDispatch();
 
-  const currId = asin ? asin : id
+  const currId = asin ? asin : id;
+  
+  // useEffect(()=>{
+    
+  // }, [view])
 
   useEffect(() => {
-    // when a particuar product is only loaded through route
     
-    if(currId && products && products.filter){
-      setCurrProduct(products.filter(item => item.asin === currId)[0]);
+    // when a particuar product is only loaded through route
+    if(currId &&
+       ((searchedproducts && searchedproducts.filter) ||
+        (saleProducts && saleProducts.filter) || 
+        (featuredProducts && featuredProducts.filter))){
+      if(view === "saleItems"){
+        setCurrProduct(saleProducts.filter(item => item.asin === currId)[0]);
+        setMaxTitleLength(30);
+      }
+      else if(view==="featuredItems"){
+        setCurrProduct(featuredProducts.filter(item => item.asin === currId)[0]);
+        setMaxTitleLength(30);
+      }
+      else{
+        setCurrProduct(searchedproducts.filter(item => item.asin === currId)[0]);
+      }
     }
     else if(currId){
 
@@ -40,7 +60,7 @@ const ProductPage = ({asin}) => {
   
       fetchData();
     }
-  }, [currId, asin]);
+  }, [currId, asin, view]);
 
 
   useEffect(()=>{
@@ -108,12 +128,15 @@ const ProductPage = ({asin}) => {
   return (
     <div className="products-page">
       { currProduct && <div className="product-details-container">
-        <h2 title={currProduct.title}> {currProduct.title?.length > 50 ? currProduct.title?.slice(0,50) + "..." : currProduct.title}</h2>
+        <h2 title={currProduct.title}> {currProduct.title?.length > maxTitleLength ? currProduct.title?.slice(0,maxTitleLength) + "..." : currProduct.title}</h2>
         {
         currProduct.is_best_seller ? (<span className="best-seller">
             <FontAwesomeIcon icon={faCrown} />
             <span>Best Seller</span>
           </span>):null
+        }
+        {
+          view === "saleItems" && <span className="onsale-badge">On Sale</span>
         }
         <img src={currProduct.img_url} alt={currProduct.title} />
         <div className="stars">{currProduct.stars?renderStars(): "Not Rated"}</div>

@@ -128,7 +128,7 @@ const ProductList = ({source, category}) => {
             </Row>
           )}
         </div>
-        {showLoadMore && <Button variant="primary" onClick={source !== "category" ? loadProducts : loadProductsFromCategory}> Load More </Button>}
+        {<Button variant="primary" onClick={source !== "category" ? loadProducts : loadProductsFromCategory}> Load More </Button>}
       </>
     }
       
