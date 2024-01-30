@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes , Navigate} from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
+import { Hub } from "aws-amplify/utils";
 import { fetchUserAttributes } from 'aws-amplify/auth';
 import { awsExports } from './auth/aws-export'; 
 import { Authenticator } from '@aws-amplify/ui-react';
@@ -41,16 +42,14 @@ const App = () => {
       setCurrUser({})
     }
   }
-
   return (
-    <Authenticator initialState='signIn'
+    <Authenticator socialProviders={['google']} initialState='signIn' 
     components={{
       SignUp: {
         FormFields() {
           return (
             <>
               <Authenticator.SignUp.FormFields />
-              {/* Custom fields for name */}
               <div><label>Name</label></div>
               <input
                 type="text"
@@ -88,7 +87,7 @@ const App = () => {
               <Route path="/orderConfirm" element={<OrderConfirmation />} />
               <Route path="/category" element={<Categories />} />
               <Route path="/comingSoon" element={<ComingSoon />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/comingSoon" />} />
             </Routes>
             <Footer />
           </div>

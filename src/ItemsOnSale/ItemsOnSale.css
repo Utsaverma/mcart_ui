@@ -1,12 +1,12 @@
 .items-on-sale {
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  /* scrollbar-width: none;
+  -ms-overflow-style: none;  */
 }
 
 .items-on-sale::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  /* display: none;  */
 }
 
 .section-heading {
@@ -17,12 +17,17 @@
   z-index: 1;
 }
 
+.sale-items{
+  /* width: 25%; */
+  display: flex;
+}
+
 .sale-item {
   display: inline-block;
   border: 1px solid #ccc;
   padding: 10px;
   margin: 5px;
-  width: 300px; /* Adjust the width of each item as needed */
+  width: 30%; /* Adjust the width of each item as needed */
   vertical-align: top;
 }
 
@@ -32,6 +37,8 @@
 
 .item-details {
   padding: 10px;
+}
+.sale-item .product-details-container{
 }
 
 

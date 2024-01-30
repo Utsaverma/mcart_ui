@@ -53,7 +53,7 @@ const Categories = () => {
   }
 
   return (
-    <>
+    <div className='minHeight'>
     <div className="grouped-dropdown">
       <ul className="gender-list">
         {Object.keys(groupedData).map((gender) => (
@@ -87,7 +87,7 @@ const Categories = () => {
         subCategory={selectedSubCategory}
       />
     }
-    </>
+    </div>
   );
 };
 

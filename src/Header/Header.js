@@ -19,9 +19,12 @@ const Header = (props) => {
         <Link to="/category">Category </Link>
       </div>
       <div className="center-section">
+        <span className="mcartTitle">Welcome to Mcart</span>
         <Search/>
       </div>
       <div className="right-section">
+        <Link to="/orderDetails"> Order Details</Link>
+        <Link to="/Profile"> Profile</Link>
         <Link to="/cart" className="cart-icon-link">
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
           <span className="cart-count">{cart?.length}</span>

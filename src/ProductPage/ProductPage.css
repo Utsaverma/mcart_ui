@@ -88,3 +88,12 @@
 .quantityDisp{
   margin: 10px;
 }
+.onsale-badge{
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  float: right;
+  position: relative;
+  top: -30px;
+}

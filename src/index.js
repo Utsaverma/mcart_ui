@@ -5,12 +5,14 @@ import { Provider } from 'react-redux';
 import store from './reducers/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import Signup from './SignUp/Signup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      {/* <Signup/> */}
     </Provider>
   </React.StrictMode>
 );
