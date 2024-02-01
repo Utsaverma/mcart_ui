@@ -38,7 +38,7 @@ pipeline {
       steps {
         script {
           withAWS(region: AWS_DEFAULT_REGION, credentials: 'MCART_CREDS') {
-                awsS3Sync(from: 'build/', to: 's3://mcart-ui-deploy')
+                s3Copy(from: 'build/', to: 's3://mcart-ui-deploy')
             }
         }
       }
