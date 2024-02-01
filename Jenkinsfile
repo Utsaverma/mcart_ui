@@ -35,7 +35,7 @@ pipeline {
     stage('CloudFrontDeploy') {
       steps {
         script {
-            bat 'client-s3-deploy'
+            bat 'npm run client-s3-deploy'
         //   withAWS(region: AWS_DEFAULT_REGION, credentials: AWS_MCART) {
         //         awsS3Sync(from: 'build/', to: 's3://mcart-ui-deploy')
         //     }
