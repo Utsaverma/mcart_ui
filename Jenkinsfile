@@ -1,13 +1,11 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20.11.0-alpine3.19' 
-            args '-p 3000:3000' 
+    agent any
+    tools {
+        nodejs "node"
         }
-    }
 
   environment {
-        // CI = 'true'
+        NODE_VERSION = '14.17.5'
         AWS_DEFAULT_REGION = 'ap-south-1'
         DISTRIBUTION_ID = 'E3PUAOKDY25P8H'
     }
