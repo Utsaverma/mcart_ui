@@ -53,7 +53,7 @@ export const Checkout = () => {
   };
 
   return (
-    <div className="checkout-container">
+    <div className="checkout-container minHeight">
       <h2>Checkout</h2>
       <div className="address-selection">
         <h3>Choose Address</h3>

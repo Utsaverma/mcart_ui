@@ -32,7 +32,7 @@ const OrderConfirmation = () => {
   console.log(paymentDetails);
 
   return (
-    <div className="OrderConfirmation-page">
+    <div className="OrderConfirmation-page minHeight">
       <h2>Your order has been placed</h2>
       <CartAddressSummary cartItems={localCartItems}/>
       <h2>Total amount paid ${paymentDetails.amount} via {paymentDetails.method} payment <span className="more-details"onClick={handleShow}>
