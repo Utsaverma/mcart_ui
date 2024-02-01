@@ -48,7 +48,7 @@ pipeline {
       steps {
         script {
             withAWS(region: AWS_DEFAULT_REGION, credentials: 'MCART_CREDS') {
-                cfInvalidate(distribution:${DISTRIBUTION_ID}, paths:['/*'], waitForCompletion: true)
+                cfInvalidate(distribution: DISTRIBUTION_ID, paths:['/*'], waitForCompletion: true)
             }
         }
       }
