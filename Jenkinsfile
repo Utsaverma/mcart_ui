@@ -38,7 +38,7 @@ pipeline {
       steps {
         script {
           withAWS(region: AWS_DEFAULT_REGION, credentials: 'MCART_CREDS') {
-                s3Copy(from: 'build/', to: 's3://mcart-ui-deploy')
+                s3Upload(file: 'build/', bucket:'mcart-ui-deploy', path:'')
             }
         }
       }
@@ -47,7 +47,9 @@ pipeline {
     stage('CloudFront Invalidation') {
       steps {
         script {
-          bat 'npm run client-cloudfront-invalidation'
+            withAWS(region: AWS_DEFAULT_REGION, credentials: 'MCART_CREDS') {
+                cfInvalidate(distribution:${DISTRIBUTION_ID}, paths:['/*'], waitForCompletion: true)
+            }
         }
       }
     }
