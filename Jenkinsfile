@@ -32,17 +32,18 @@ pipeline {
       }
     }
 
-    stage('CloudFronDeploy') {
+    stage('CloudFrontDeploy') {
       steps {
         script {
-          withAWS(region: AWS_DEFAULT_REGION, credentials: AWS_MCART) {
-                awsS3Sync(from: 'build/', to: 's3://mcart-ui-deploy')
-            }
+            bat 'client-s3-deploy'
+        //   withAWS(region: AWS_DEFAULT_REGION, credentials: AWS_MCART) {
+        //         awsS3Sync(from: 'build/', to: 's3://mcart-ui-deploy')
+        //     }
         }
       }
     }
 
-    stage('CloudFront Invalidation') {
+    stage('CloudFrontInvalidation') {
       steps {
         script {
           bat 'npm run client-cloudfront-invalidation'
