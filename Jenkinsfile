@@ -9,8 +9,8 @@ pipeline {
         NODE_VERSION = '14.17.5'
         AWS_DEFAULT_REGION = 'ap-south-1'
         DISTRIBUTION_ID = 'E3PUAOKDY25P8H'
-        AWS_ACCESS_KEY_ID     = credentials('MCART_CREDS').AWS_ACCESS_KEY_ID
-        AWS_SECRET_ACCESS_KEY = credentials('MCART_CREDS').AWS_SECRET_ACCESS_KEY
+        // AWS_ACCESS_KEY_ID     = credentials('MCART_CREDS').AWS_ACCESS_KEY_ID
+        // AWS_SECRET_ACCESS_KEY = credentials('MCART_CREDS').AWS_SECRET_ACCESS_KEY
     }
 
   stages {
