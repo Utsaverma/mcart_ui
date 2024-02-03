@@ -1,4 +1,5 @@
-import { MOCKED_DATA } from "./Mocked_data";
+import { MOCKED_DATA } from "./mocked_data";
+import { MOCK } from "./config";
 
 const BASE_URL = 'http://localhost:5000';
 
@@ -6,8 +7,6 @@ export const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3;
 
 export const DEFAULT_START_INDEX = 0
 export const DEFAULT_SIZE = 30
-
-const MOCK=true;
 
 export const getProductById = async (id) => {
     if(MOCK){

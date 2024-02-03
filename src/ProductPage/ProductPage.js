@@ -31,24 +31,18 @@ const ProductPage = ({asin, view}) => {
   useEffect(() => {
     
     // when a particuar product is only loaded through route
-    if(currId &&
-       ((searchedproducts && searchedproducts.filter) ||
-        (saleProducts && saleProducts.filter) || 
-        (featuredProducts && featuredProducts.filter))){
-      if(view === "saleItems"){
-        setCurrProduct(saleProducts.filter(item => item.asin === currId)[0]);
-        setMaxTitleLength(30);
-      }
-      else if(view==="featuredItems"){
-        setCurrProduct(featuredProducts.filter(item => item.asin === currId)[0]);
-        setMaxTitleLength(30);
-      }
-      else{
-        setCurrProduct(searchedproducts.filter(item => item.asin === currId)[0]);
-      }
+    if(currId && saleProducts && saleProducts.length && view === "saleItems"){
+      setCurrProduct(saleProducts.filter(item => item.asin === currId)[0]);
+      setMaxTitleLength(30);
+    }
+    else if(currId && featuredProducts && featuredProducts.length && view==="featuredItems"){
+      setCurrProduct(featuredProducts.filter(item => item.asin === currId)[0]);
+      setMaxTitleLength(30);
+    }
+    else if(currId && searchedproducts && searchedproducts.length){
+      setCurrProduct(searchedproducts.filter(item => item.asin === currId)[0]);
     }
     else if(currId){
-
       const fetchData = async () => {
         try {
           const data = await getProductById(currId);

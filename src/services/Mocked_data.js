@@ -480,3 +480,116 @@ export const MOCKED_DATA = [
         "title": "Helags Cap"
     }
 ]
+
+export const MOCKED_ORDERS = [
+    {
+        "OrderID": "12345",
+        "UserID": "user123",
+        "OrderDate": "2024-01-01T12:00:00",
+        "Products": [
+        {
+            "ProductID": "B0C4H2CHDV",
+            "ProductName": "Boston Cap Unisex Baseball Cap Sun Hat Adjustable Trucker Cap",
+            "ImageUrl": "https://m.media-amazon.com/images/I/516WGe4YvVL._AC_UL320_.jpg",
+            "Quantity": 2,
+            "Price": 29.99,
+            "Color": "Red",
+            "Size": "Medium",
+            "Brand": "Brand A",
+            "Category": "Clothing",
+            "Subcategory": "T-Shirts",
+            "Discount": 5.00,
+            "Subtotal": 54.98
+        },
+        {
+            "ProductID": "B003VSARVA",
+            "ProductName": "Piper Cap",
+            "ImageUrl": "https://m.media-amazon.com/images/I/31XwvOz-bmL._AC_UL320_.jpg",
+            "Quantity": 1,
+            "Price": 49.99,
+            "Color": "Blue",
+            "Size": "Large",
+            "Brand": "Brand B",
+            "Category": "Footwear",
+            "Subcategory": "Sneakers",
+            "Discount": 0.00,
+            "Subtotal": 49.99
+        }
+        ],
+        "TotalAmount": 104.97,
+        "Status": "Pending",
+        "ShippingAddress": {
+        "Name": "Utsav Verma",
+        "Street": "123 Main St",
+        "City": "Cityville",
+        "State": "ST",
+        "ZipCode": "12345"
+        },
+        "BillingAddress": {
+        "Name": "Utsav Verma",
+        "Street": "456 Billing St",
+        "City": "Cityville",
+        "State": "ST",
+        "ZipCode": "12345"
+        },
+        "PaymentMethod": "CreditCard",
+        "PaymentStatus": "Paid",
+        "ShippingMethod": "Standard",
+        "DeliveryDate": "2024-01-10"
+    },
+    {
+        "OrderID": "12345",
+        "UserID": "user123",
+        "OrderDate": "2024-01-01T12:00:00",
+        "Products": [
+            {
+                "ProductID": "B0C4H2CHDV",
+                "ProductName": "Boston Cap Unisex Baseball Cap Sun Hat Adjustable Trucker Cap",
+                "ImageUrl": "https://m.media-amazon.com/images/I/516WGe4YvVL._AC_UL320_.jpg",
+                "Quantity": 2,
+                "Price": 29.99,
+                "Color": "Red",
+                "Size": "Medium",
+                "Brand": "Brand A",
+                "Category": "Clothing",
+                "Subcategory": "T-Shirts",
+                "Discount": 5.00,
+                "Subtotal": 54.98
+            },
+            {
+                "ProductID": "B003VSARVA",
+                "ProductName": "Piper Cap",
+                "ImageUrl": "https://m.media-amazon.com/images/I/31XwvOz-bmL._AC_UL320_.jpg",
+                "Quantity": 1,
+                "Price": 49.99,
+                "Color": "Blue",
+                "Size": "Large",
+                "Brand": "Brand B",
+                "Category": "Footwear",
+                "Subcategory": "Sneakers",
+                "Discount": 0.00,
+                "Subtotal": 49.99
+            }
+        ],
+        "TotalAmount": 104.97,
+        "Status": "Pending",
+        "ShippingAddress": {
+        "Name": "Utsav Verma",
+        "Street": "123 Main St",
+        "City": "Cityville",
+        "State": "ST",
+        "ZipCode": "12345"
+        },
+        "BillingAddress": {
+        "Name": "Utsav Verma",
+        "Street": "456 Billing St",
+        "City": "Cityville",
+        "State": "ST",
+        "ZipCode": "12345"
+        },
+        "PaymentMethod": "CreditCard",
+        "PaymentStatus": "Paid",
+        "ShippingMethod": "Standard",
+        "DeliveryDate": "2024-01-10"
+    }
+]

@@ -18,14 +18,14 @@ export const Payment = () =>{
     const [paymentMethod, setPaymentMethod] = useState('');
    
     const AVAILABLE_PAYMENT_OPTIONS = {
-        'paypal': 'Paypal',
-        'paytm': 'PayTm',
-        'razorpay': 'RazorPay',
-        'juspay': 'JusPay',
         'directbanktransfer': 'Direct Bank Transfer',
         'card': 'Pay using card (Debit/Credit)',
         'cheque': 'Cheque Payment',
-        'cod': 'Cash On Delivery'
+        'cod': 'Cash On Delivery',
+        'paypal': 'Paypal',
+        'paytm': 'PayTm',
+        'razorpay': 'RazorPay',
+        'juspay': 'JusPay'
     }
 
     const handlePaymentMethodChange = (method) => {
