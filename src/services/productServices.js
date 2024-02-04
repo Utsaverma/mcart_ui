@@ -70,7 +70,7 @@ export const getProductsByTitle = async (value, abortController, startIndex=DEFA
 };
 
 export const getCategories = () => {
-    if(MOCK){
+    // if(MOCK){
         const data = [
             "Men|Accessories|Boys' Watches",
             "Men|Accessories|Men's Accessories",
@@ -92,7 +92,7 @@ export const getCategories = () => {
             return { gender, category, subCategory};
           });
           return jsonData
-    }
+    // }
     // else{
     //     try {
     //         const response = await fetch(`${BASE_URL}/getAllCategories`);
@@ -132,7 +132,7 @@ export const getItemsonSale = async() =>{
     }
     else{
         // call api
-        return [];
+        return MOCKED_DATA;
     }
 }
 
@@ -142,6 +142,6 @@ export const getItemsfeatured = async() =>{
     }
     else{
         // call api
-        return [];
+        return MOCKED_DATA;
     }
 }

@@ -1,13 +1,20 @@
 import React from 'react';
 import './UserDetails.css';
+import { useDispatch } from 'react-redux';
+import { update } from '../reducers/userSlice';
 
 const UserDetails = (props) => {
-  // Your user details logic here (e.g., user name, profile image, etc.)
+  const dispatch = useDispatch();
+
+  const signOut = () =>{
+    dispatch(update({}))
+    props.signOut();
+  }
 
   return (
     <div className="user-details">
       <p>Welcome, {props.user.name}</p>
-      <button onClick={props.signOut}>Sign out</button>
+      <button onClick={signOut}>Sign out</button>
     </div>
   );
 }

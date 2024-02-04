@@ -56,3 +56,6 @@
 .gender-list{
   padding-left: 0px;
 }
+.categoryMainConatiner{
+  overflow-y: auto;
+}

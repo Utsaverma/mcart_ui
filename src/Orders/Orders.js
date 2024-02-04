@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { getOrderByUserId } from "../services/orderService";
 import "./Orders.css"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadOrders } from "../reducers/ordersSlice";
+import { getUser } from "../reducers/userSlice";
 
 const Orders = () =>{
-    const currentUser = 'user123';
+    
     const dispatch = useDispatch();
+    const currentUser = useSelector(getUser);
     const [orders, setOrders] = useState([]);
 
     useEffect(()=>{
-        getOrders(currentUser);
+        getOrders(currentUser['userId']);
     },[])
 
     const getOrders = async (userId) => {

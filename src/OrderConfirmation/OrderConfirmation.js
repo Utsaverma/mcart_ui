@@ -8,6 +8,9 @@ import { getpaymentDetails } from '../reducers/paymentDetailsSlice';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { updateOrders } from '../reducers/ordersSlice';
+import { getCurrentAddress } from '../reducers/addressSlice';
+import { getUser } from '../reducers/userSlice';
+import { saveOrder } from '../services/orderService';
 
 const OrderConfirmation = () => {
 
@@ -21,12 +24,15 @@ const OrderConfirmation = () => {
 
   const cartItems = useSelector(getCart);
   const paymentDetails = useSelector(getpaymentDetails);
+  const addressDetails = useSelector(getCurrentAddress);
+  const userDetails = useSelector(getUser);
 
   useEffect(() => {    
     if(localCartItems.length === 0){
       setLocalCartItems(cartItems);
-      constructDataToPost(cartItems)
-      dispatch(updateOrders({}));
+      const orderDetails = constructDataToPost(cartItems);
+      dispatch(updateOrders(orderDetails));
+      saveOrder(orderDetails);
     }
   }, []);
 
@@ -37,96 +43,38 @@ const OrderConfirmation = () => {
     
   }, [localCartItems]);
 
-//   {
-//     // "OrderID": "12345",
-//     "UserID": "user123",
-//     // "OrderDate": "2024-01-01T12:00:00",
-//     // "Products": [
-//     //   {
-//     //       "ProductID": "B0C4H2CHDV",
-//     //       "ProductName": "Boston Cap Unisex Baseball Cap Sun Hat Adjustable Trucker Cap",
-//     //       "ImageUrl": "https://m.media-amazon.com/images/I/516WGe4YvVL._AC_UL320_.jpg",
-//     //       "Quantity": 2,
-//     //       "Price": 29.99,
-//     //       "Color": "Red",
-//     //       "Size": "Medium",
-//     //       "Brand": "Brand A",
-//     //       "Category": "Clothing",
-//     //       "Subcategory": "T-Shirts",
-//     //       "Discount": 5.00,
-//     //       "Subtotal": 54.98
-//     //   },
-//     //   {
-//     //       "ProductID": "B003VSARVA",
-//     //       "ProductName": "Piper Cap",
-//     //       "ImageUrl": "https://m.media-amazon.com/images/I/31XwvOz-bmL._AC_UL320_.jpg",
-//     //       "Quantity": 1,
-//     //       "Price": 49.99,
-//     //       "Color": "Blue",
-//     //       "Size": "Large",
-//     //       "Brand": "Brand B",
-//     //       "Category": "Footwear",
-//     //       "Subcategory": "Sneakers",
-//     //       "Discount": 0.00,
-//     //       "Subtotal": 49.99
-//     //   }
-//     // ],
-//     // "TotalAmount": 104.97,
-//     // "Status": "Pending",
-//     "ShippingAddress": {
-//       "Name": "Utsav Verma",
-//       "Street": "123 Main St",
-//       "City": "Cityville",
-//       "State": "ST",
-//       "ZipCode": "12345"
-//     },
-//     "BillingAddress": {
-//       "Name": "Utsav Verma",
-//       "Street": "456 Billing St",
-//       "City": "Cityville",
-//       "State": "ST",
-//       "ZipCode": "12345"
-//     },
-//     "PaymentMethod": "CreditCard",
-//     "PaymentStatus": "Paid",
-//     // "ShippingMethod": "Standard",
-//     // "DeliveryDate": "2024-01-10"
-// }
-  
-
-  const constructDataToPost = (cartVal) =>{
-    item = constructMetaData(cartVals);
-    addProductDetails(cartVal);
-    addAddressDetails();
-    addPaymentDetails();
-    
+  const constructDataToPost = (cartVals) =>{
+    let item = constructMetaData(cartVals);
+    item['Products']= addProductDetails(cartVals);
+    item['ShippingAddress'] = addAddressDetails();
+    item['BillingAddress'] = addAddressDetails();
+    addPaymentDetails(item);
+    return item;
   }
 
-  constructMetaData = (cartVals) => {
+  const constructMetaData = (cartVals) => {
     const [currentDate, deliveryDate] = getOrderDates();
-    
-    item = {
-      "OrderID": generateOrderId(),
-      "UserID": "",
+    return {
+      "UserID_OrderID": `${userDetails['userId']}_${generateOrderId()}`,
       "OrderDate": currentDate,
       "ShippingMethod": "Standard",
       "DeliveryDate": deliveryDate,
       "Status": "Pending",
-      "TotalAmount":calculateTotalAmount(cartVals).toFixed(2)
+      "TotalAmount":calculateTotalAmount(cartVals).toFixed(2).toString()
     }
   }
 
-  const addProductDetails = (cartVal) => {
-    products = []
-    cartVal.forEach(currProd =>{
-      item = {
+  const addProductDetails = (cartVals) => {
+    let products = []
+    cartVals.forEach(currProd =>{
+      let item = {
         "ProductID": currProd['asin'],
         "ProductName": currProd['title'],
         "ImageUrl": currProd['img_url'],
-        "Quantity": currProd['quantity'],
-        "Price": currProd['price'],
-        "Discount": currProd['list_price'] ? currProd['list_price'] - currProd['price'] : 0,
-        "Subtotal": currProd['price'] * currProd['quantity']
+        "Quantity": currProd['quantity'].toString(),
+        "Price": currProd['price'].toString(),
+        "Discount": currProd['list_price'] ? (currProd['list_price'] - currProd['price']).toString() : "0",
+        "Subtotal": (currProd['price'] * currProd['quantity']).toString()
       }
       products.push(item);
     })
@@ -134,11 +82,21 @@ const OrderConfirmation = () => {
   }
 
   const addAddressDetails = () => {
-
+    return {
+      "Name": addressDetails['fullName'],
+      "Street": addressDetails['address'],
+      "City": addressDetails['city'],
+      "PhoneNo": addressDetails['phoneNo'],
+      "ZipCode": addressDetails['zipCode'],
+      "Landmark": addressDetails['landmark'],
+      "AdditionalInstructions": addressDetails['additionalInstructions']
+    }
   }
 
-  const addPaymentDetails = () => {
-    
+  const addPaymentDetails = (item) => {
+    item["PaymentMethod"] = paymentDetails['method']
+    item["PaymentStatus"] = "Paid"
+    return item
   }
 
   const getOrderDates = () => {
@@ -160,6 +118,7 @@ const OrderConfirmation = () => {
     const timestamp = new Date().getTime();
     const randomNumber = Math.floor(Math.random() * 900000) + 100000;
     const orderId = `${timestamp}${randomNumber}`;
+    console.log(orderId)
     return orderId;
   }
 

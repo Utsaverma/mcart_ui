@@ -25,60 +25,73 @@ import OrderDetails from './OrderDetails/OrderDetails';
 import Orders from './Orders/Orders';
 
 
+const DEFAULT_USER = {
+  "userId": "default",
+  "email": "developer@mcart.com",
+  "name": "Default User"
+ }
+
 Amplify.configure(awsExports)
 
 const App = () => {
 
+  const dispatch = useDispatch();
+
   const [currUser, setCurrUser] = useState({});
+  
 
-  // useEffect(() => {
-  //   fetchCurrUserAttributes();
-  // }, []);
+  useEffect(() => {
+    fetchCurrUserAttributes();
+    // dispatch(userUpdate(DEFAULT_USER));
+  }, []);
 
-  // const fetchCurrUserAttributes = async () => {
-  //   try {
-  //     const {sub: userId, _, name, email} = await fetchUserAttributes();
-  //     setCurrUser({ userId, email, name});
-  //   } 
-  //   catch (err) {
-  //     setCurrUser({})
-  //   }
-  // }
+  const fetchCurrUserAttributes = async () => {
+    try {
+      const {sub: userId, _, name, email} = await fetchUserAttributes();
+      dispatch(userUpdate({ userId, email, name}));
+      setCurrUser({ userId, email, name});
+    } 
+    catch (err) {
+      dispatch(userUpdate(DEFAULT_USER));
+      setCurrUser(DEFAULT_USER);
+    }
+  }
+
   return (
-    // <Authenticator socialProviders={['google']} initialState='signIn' 
-    // components={{
-    //   SignUp: {
-    //     FormFields() {
-    //       return (
-    //         <>
-    //           <Authenticator.SignUp.FormFields />
-    //           <div><label>Name</label></div>
-    //           <input
-    //             type="text"
-    //             name="name"
-    //             placeholder="Please enter your name"
-    //           />
-    //         </>
-    //       );
-    //     },
-    //   },
-    // }}
-    // services={{
-    //   async validateCustomSignUp(formData) {
-    //     if (!formData.name) {
-    //       return {
-    //         name: 'Name is required',
-    //       };
-    //     }
-    //   },
-    // }}
-    // >
-    //   {
-    //     ({ signOut, _}) => (
+    <Authenticator socialProviders={['google']} initialState='signIn' 
+    components={{
+      SignUp: {
+        FormFields() {
+          return (
+            <>
+              <Authenticator.SignUp.FormFields />
+              <div><label>Name</label></div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Please enter your name"
+              />
+            </>
+          );
+        },
+      },
+    }}
+    services={{
+      async validateCustomSignUp(formData) {
+        if (!formData.name) {
+          return {
+            name: 'Name is required',
+          };
+        }
+      },
+    }}
+    >
+      {
+        ({ signOut, _}) => (
           <Router>
           <div className="App">
-             {/* <Header signOut={signOut} user={currUser}/> */}
-            <Header signOut={()=>{}} user={currUser}/>
+             <Header signOut={signOut} user={currUser}/>
+            {/* <Header signOut={()=>{}} user={currUser}/> */}
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/products/:value/:key" element={<ProductList />} />
@@ -95,9 +108,9 @@ const App = () => {
             <Footer />
           </div>
         </Router>
-    //     )
-    //   }  
-    // </Authenticator>
+        )
+      }  
+    </Authenticator>
   );
 }
 

@@ -21,3 +21,19 @@ export const getOrderByUserId = async(userId) =>{
         } 
     }
 }
+export const saveOrder = async(orderDetails) =>{
+    if(MOCK){
+        // return MOCKED_ORDERS;
+    }
+    else{
+        const response = await fetch(`${BASE_URL}/save`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderDetails),
+        });
+        const data = await response.json();
+        return data;
+    }
+}
