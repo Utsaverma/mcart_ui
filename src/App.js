@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes , Navigate} from 'react-router-dom';
-import { Amplify } from 'aws-amplify';
-import { Hub } from "aws-amplify/utils";
-import { fetchUserAttributes } from 'aws-amplify/auth';
+import { Amplify, Auth } from 'aws-amplify';
+import { fetchUserAttributes, getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
 import { awsExports } from './auth/aws-export'; 
 import { Authenticator } from '@aws-amplify/ui-react';
 import Header from './Header/Header';
@@ -21,39 +20,51 @@ import { Checkout } from './Checkout/Checkout';
 import { Payment } from './Payment/Payment';
 import ProductList from './ProductList/ProductList';
 import Categories from './Categories/Categories';
-import OrderDetails from './OrderDetails/OrderDetails';
 import Orders from './Orders/Orders';
 
-
-const DEFAULT_USER = {
+const GUEST_USER = {
   "userId": "default",
-  "email": "developer@mcart.com",
-  "name": "Default User"
+  "email": "guest@mcart.com",
+  "name": "Guest User"
  }
 
-Amplify.configure(awsExports)
+
+Amplify.configure(awsExports);
 
 const App = () => {
 
   const dispatch = useDispatch();
 
   const [currUser, setCurrUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   
 
   useEffect(() => {
-    fetchCurrUserAttributes();
-    // dispatch(userUpdate(DEFAULT_USER));
+      fetchCurrUserAttributes();
   }, []);
 
   const fetchCurrUserAttributes = async () => {
     try {
-      const {sub: userId, _, name, email} = await fetchUserAttributes();
-      dispatch(userUpdate({ userId, email, name}));
-      setCurrUser({ userId, email, name});
+      const { _, idToken } = (await fetchAuthSession()).tokens ?? {};
+      if(idToken && idToken.payload){
+        const currUser = {
+          "userId": idToken.payload['identities'][0]['userId'],
+          "email": idToken.payload['email'],
+          "name": idToken.payload['name']
+        }
+        dispatch(userUpdate(currUser));
+        setCurrUser(currUser);
+        setIsAuthenticated(true);
+      }
+      else{
+        setIsAuthenticated(false);
+        dispatch(userUpdate(GUEST_USER));
+        setCurrUser(GUEST_USER);
+      }
     } 
     catch (err) {
-      dispatch(userUpdate(DEFAULT_USER));
-      setCurrUser(DEFAULT_USER);
+      console.log(err);
+      setIsAuthenticated(false);
     }
   }
 

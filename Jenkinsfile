@@ -12,11 +12,6 @@ pipeline {
     }
 
   stages {
-    stage('Checkout') {
-        steps {
-            checkout scm
-        }
-    }
 
     stage('NPM Install') {
         steps {
