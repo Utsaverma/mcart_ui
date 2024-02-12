@@ -7,17 +7,11 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { update as userUpdate } from './reducers/userSlice';
 import { useDispatch } from 'react-redux';
+import { RenderRoutes } from './helper/RenderNavigations';
+import { GUEST_USER, fetchCurrUserAttributes } from './helper/utility';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { RenderRoutes } from './helper/RenderNavigations';
-
-const GUEST_USER = {
-  "userId": "default",
-  "email": "guest@mcart.com",
-  "name": "Guest User",
-  "isAuthenticated": false
- }
 
 
 Amplify.configure(awsExports);
@@ -31,31 +25,14 @@ const App = () => {
 
   const [currUser, setCurrUser] = useState(GUEST_USER);  
 
-  useEffect(() => {
-      fetchCurrUserAttributes();
-  }, []);
-
-  const fetchCurrUserAttributes = async () => {
-    try {
-      const { _, idToken } = (await fetchAuthSession()).tokens ?? {};
-      if(idToken && idToken.payload){
-        const currUser = {
-          "userId": idToken.payload['sub'] ? idToken.payload['sub'] : idToken.payload['identities'][0]['userId'],
-          "email": idToken.payload['email'],
-          "name": idToken.payload['name'],
-          "isAuthenticated": true,
-        }
-        updateUser(currUser);
-      }
-      else{
-        updateUser(GUEST_USER);
-      }
-    } 
-    catch (err) {
-      console.log(err);
-      updateUser(GUEST_USER);
-    }
+  const updateUser = (user) =>{
+    setCurrUser(user);
+    dispatch(userUpdate(user));
   }
+
+  useEffect(() => {
+      fetchCurrUserAttributes(updateUser);
+  }, []);
 
   async function handleSignOut() {
     try {
@@ -66,10 +43,7 @@ const App = () => {
     }
   }
 
-  const updateUser = (GUEST_USER) =>{
-    setCurrUser(GUEST_USER);
-    dispatch(userUpdate(GUEST_USER));
-  }
+  
 
 
   return (
