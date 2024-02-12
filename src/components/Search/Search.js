@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { update as ProductUpdate } from '../reducers/productsSlice';
-import { getProductsByTitle } from '../services/productServices';
+import { update as ProductUpdate } from '../../reducers/productsSlice';
+import { getProductsByTitle } from '../../services/productServices';
 import { Button } from 'react-bootstrap';
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Checkout.css';
 import { Form, Toast, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { updateCurrentAddress, updateAllAddress, getAllAddress} from '../reducers/addressSlice';
+import { updateCurrentAddress, updateAllAddress, getAllAddress} from '../../reducers/addressSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Checkout = () => {

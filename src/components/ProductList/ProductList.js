@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProducts, append as appendProducts, update as updateProducts} from '../reducers/productsSlice';
+import { getProducts, append as appendProducts, update as updateProducts} from '../../reducers/productsSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Button } from 'react-bootstrap';
 import ProductPage from '../ProductPage/ProductPage';
 import { Filters } from '../Filters/filters';
-import { getProductsByTitle, DEFAULT_START_INDEX, DEFAULT_SIZE, NUMBER_OF_ELEMENTS_AT_EACH_ROW, getProductsByCategory } from '../services/productServices';
+import { getProductsByTitle, DEFAULT_START_INDEX, DEFAULT_SIZE, NUMBER_OF_ELEMENTS_AT_EACH_ROW,
+   getProductsByCategory } from '../../services/productServices';
 import './ProductList.css';
 
 const ProductList = ({source, category}) => {

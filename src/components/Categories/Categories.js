@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Categories.css';
-import { getCategories } from '../services/productServices';
+import { getCategories } from '../../services/productServices';
 import { CategorySearchList } from '../CategorySearchList/CategorySearchList.js';
 
 

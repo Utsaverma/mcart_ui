@@ -1,5 +1,5 @@
 import {Row, Col} from 'react-bootstrap';
-import { getCurrentAddress } from '../reducers/addressSlice';
+import { getCurrentAddress } from '../../reducers/addressSlice';
 import { useSelector } from 'react-redux';
 
 export const CartAddressSummary = ({cartItems}) => {

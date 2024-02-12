@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './ItemsOnSale.css';
-import { getItemsonSale } from '../services/productServices';
+import { getItemsonSale } from '../../services/productServices';
 import ProductPage from '../ProductPage/ProductPage';
 import { useDispatch } from 'react-redux';
-import { updateSaleProducts } from '../reducers/productsSlice';
+import { updateSaleProducts } from '../../reducers/productsSlice';
 
 const ItemsOnSale = () => {
 

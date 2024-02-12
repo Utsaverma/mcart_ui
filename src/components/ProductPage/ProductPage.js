@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 import './ProductPage.css'; // Import the CSS file
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCrown, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import { getProducts, getFeaturedProducts, getSaleProducts } from '../reducers/productsSlice';
-import { getCart, addItemToCart, removeItemFromCart } from '../reducers/cartSlice';
+import { getProducts, getFeaturedProducts, getSaleProducts } from '../../reducers/productsSlice';
+import { getCart, addItemToCart, removeItemFromCart } from '../../reducers/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductById } from '../services/productServices';
+import { getProductById } from '../../services/productServices';
 
 const ProductPage = ({asin, view}) => {
   // Logic to fetch and display products

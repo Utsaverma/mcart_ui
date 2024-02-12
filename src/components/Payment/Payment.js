@@ -1,5 +1,5 @@
-import { getCart } from "../reducers/cartSlice";
-import { updatePaymentDetails } from "../reducers/paymentDetailsSlice";
+import { getCart } from "../../reducers/cartSlice";
+import { updatePaymentDetails } from "../../reducers/paymentDetailsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";

@@ -7,7 +7,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './Header.css'; // General header styles
 import { Search } from '../Search/Search';
 import { useSelector } from 'react-redux';
-import { getCart } from '../reducers/cartSlice';
+import { getCart } from '../../reducers/cartSlice';
 
 const Header = (props) => { 
   const cart = useSelector(getCart);

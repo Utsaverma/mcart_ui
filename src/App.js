@@ -4,23 +4,23 @@ import { Amplify, Auth } from 'aws-amplify';
 import { fetchUserAttributes, getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
 import { awsExports } from './auth/aws-export'; 
 import { Authenticator } from '@aws-amplify/ui-react';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import HomePage from './HomePage/HomePage';
-import ProductPage from './ProductPage/ProductPage';
-import OrderConfirmation from './OrderConfirmation/OrderConfirmation';
-import ComingSoon from './ComingSoon/ComingSoon';
-import Cart from './Cart/Cart';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import HomePage from './components/HomePage/HomePage';
+import ProductPage from './components/ProductPage/ProductPage';
+import OrderConfirmation from './components/OrderConfirmation/OrderConfirmation';
+import ComingSoon from './components/ComingSoon/ComingSoon';
+import Cart from './components/Cart/Cart';
 import { update as userUpdate } from './reducers/userSlice';
 import { useDispatch } from 'react-redux';
+import { Checkout } from './components/Checkout/Checkout';
+import { Payment } from './components/Payment/Payment';
+import ProductList from './components/ProductList/ProductList';
+import Categories from './components/Categories/Categories';
+import Orders from './components/Orders/Orders';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Checkout } from './Checkout/Checkout';
-import { Payment } from './Payment/Payment';
-import ProductList from './ProductList/ProductList';
-import Categories from './Categories/Categories';
-import Orders from './Orders/Orders';
 
 const GUEST_USER = {
   "userId": "default",
@@ -69,7 +69,7 @@ const App = () => {
   }
 
   return (
-    <Authenticator socialProviders={['google']} initialState='signIn' 
+    <Authenticator socialProviders={['google', 'facebook']} initialState='signIn' 
     components={{
       SignUp: {
         FormFields() {

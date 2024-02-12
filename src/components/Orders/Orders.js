@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { getOrderByUserId } from "../services/orderService";
+import { getOrderByUserId } from "../../services/orderService";
 import "./Orders.css"
 import { useDispatch, useSelector } from "react-redux";
-import { loadOrders } from "../reducers/ordersSlice";
-import { getUser } from "../reducers/userSlice";
+import { loadOrders } from "../../reducers/ordersSlice";
+import { getUser } from "../../reducers/userSlice";
 
 const Orders = () =>{
     

@@ -1,9 +1,9 @@
 import React from 'react';
-import { getItemsfeatured } from '../services/productServices';
+import { getItemsfeatured } from '../../services/productServices';
 import ProductPage from '../ProductPage/ProductPage';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { updateFeaturedProducts } from '../reducers/productsSlice';
+import { updateFeaturedProducts } from '../../reducers/productsSlice';
 import './FeaturedProducts.css';
 
 const FeaturedProducts = () => {

@@ -3,14 +3,14 @@ import './OrderConfirmation.css';
 import { CartAddressSummary } from '../CartAddressSummary/CartAddressSummary';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { getCart, emptyCart } from '../reducers/cartSlice';
-import { getpaymentDetails } from '../reducers/paymentDetailsSlice';
+import { getCart, emptyCart } from '../../reducers/cartSlice';
+import { getpaymentDetails } from '../../reducers/paymentDetailsSlice';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { updateOrders } from '../reducers/ordersSlice';
-import { getCurrentAddress } from '../reducers/addressSlice';
-import { getUser } from '../reducers/userSlice';
-import { saveOrder } from '../services/orderService';
+import { updateOrders } from '../../reducers/ordersSlice';
+import { getCurrentAddress } from '../../reducers/addressSlice';
+import { getUser } from '../../reducers/userSlice';
+import { saveOrder } from '../../services/orderService';
 
 const OrderConfirmation = () => {
 

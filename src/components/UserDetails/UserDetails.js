@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserDetails.css';
 import { useDispatch } from 'react-redux';
-import { update } from '../reducers/userSlice';
+import { update } from '../../reducers/userSlice';;
 
 const UserDetails = (props) => {
   const dispatch = useDispatch();

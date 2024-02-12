@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getProductsByCategory } from "../services/productServices";
+import { getProductsByCategory } from "../../services/productServices";
 import ProductList from "../ProductList/ProductList";
 
 export const CategorySearchList = ({gender, category,subCategory}) => {
