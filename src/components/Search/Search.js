@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SearchResultsList } from '../SearchResultsList/SearchResultsList';
 import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { update as ProductUpdate } from '../../reducers/productsSlice';
 import { getProductsByTitle } from '../../services/productServices';
 import { Button } from 'react-bootstrap';
@@ -13,7 +13,6 @@ export const Search = () =>{
     const [searchQuery, setSearchQuery] = useState('');
     const [dropdownResults, setDropDownResults] = useState([]);
 
-    const [error, setError] = useState("");
     const [showModal, setShowModal] = useState(true);
     const [abortController, setAbortController] = useState(null);
     const [reloadKey, setReloadKey] = useState(0);

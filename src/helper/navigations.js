@@ -11,6 +11,7 @@ import Payment from "../components/Payment/Payment";
 import OrderConfirmation from "../components/OrderConfirmation/OrderConfirmation";
 import Orders from "../components/Orders/Orders";
 import AuthGuard from "../auth/AuthGuard";
+import LoginHandler from "./LoginHandler";
 
 
 export const nav = [
@@ -24,7 +25,7 @@ export const nav = [
      { path:     "/paymentPage",             element: <AuthGuard><Payment /></AuthGuard>,            shouldBeAuthenticated: true  },
      { path:     "/orderConfirm",            element: <AuthGuard><OrderConfirmation /></AuthGuard>,  shouldBeAuthenticated: true  },
      { path:     "/orders",                  element: <AuthGuard><Orders /></AuthGuard>,             shouldBeAuthenticated: true  },
-     { path:     "/login",                   element: <AuthGuard>Sign In</AuthGuard>,                shouldBeAuthenticated: true  },
+     { path:     "/login",                   element: <AuthGuard><LoginHandler/></AuthGuard>,                shouldBeAuthenticated: true  },
      { path:     "*",                        element: <Navigate to="/comingSoon" />,                 shouldBeAuthenticated: false  },
 ]
 

@@ -40,39 +40,40 @@ const App = () => {
       const { _, idToken } = (await fetchAuthSession()).tokens ?? {};
       if(idToken && idToken.payload){
         const currUser = {
-          "userId": idToken.payload['identities'][0]['userId'],
+          "userId": idToken.payload['sub'] ? idToken.payload['sub'] : idToken.payload['identities'][0]['userId'],
           "email": idToken.payload['email'],
           "name": idToken.payload['name'],
           "isAuthenticated": true,
         }
-        dispatch(userUpdate(currUser));
-        setCurrUser(currUser);
+        updateUser(currUser);
       }
       else{
-        dispatch(userUpdate(GUEST_USER));
-        setCurrUser(GUEST_USER);
+        updateUser(GUEST_USER);
       }
     } 
     catch (err) {
       console.log(err);
-      setCurrUser(GUEST_USER);
-      dispatch(userUpdate(GUEST_USER));
+      updateUser(GUEST_USER);
     }
   }
 
   async function handleSignOut() {
     try {
       await signOut();
-      setCurrUser(GUEST_USER);
-      dispatch(userUpdate(GUEST_USER));
+      updateUser(GUEST_USER);
     } catch (error) {
       console.log('error signing out: ', error);
     }
   }
 
+  const updateUser = (GUEST_USER) =>{
+    setCurrUser(GUEST_USER);
+    dispatch(userUpdate(GUEST_USER));
+  }
+
 
   return (
-    <AuthContext.Provider value={{currUser, handleSignOut}}>
+    <AuthContext.Provider value={{currUser, updateUser, handleSignOut}}>
       <Router>
         <div className="App">
           <Header/>

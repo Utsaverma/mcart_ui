@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Button } from 'react-bootstrap';
 import ProductPage from '../ProductPage/ProductPage';
 import { Filters } from '../Filters/filters';
-import { getProductsByTitle, DEFAULT_START_INDEX, DEFAULT_SIZE, NUMBER_OF_ELEMENTS_AT_EACH_ROW,
-   getProductsByCategory } from '../../services/productServices';
+import { getProductsByTitle, DEFAULT_START_INDEX, DEFAULT_SIZE, NUMBER_OF_ELEMENTS_AT_EACH_ROW, getProductsByCategory } from '../../services/productServices';
 import './ProductList.css';
 
 const ProductList = ({source, category}) => {
@@ -129,7 +128,9 @@ const ProductList = ({source, category}) => {
             </Row>
           )}
         </div>
-        {<Button variant="primary" onClick={source !== "category" ? loadProducts : loadProductsFromCategory}> Load More </Button>}
+        {
+          showLoadMore ?<Button variant="primary" onClick={source !== "category" ? loadProducts : loadProductsFromCategory}> Load More </Button>: null
+        }
       </>
     }
       

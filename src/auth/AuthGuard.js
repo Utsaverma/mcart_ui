@@ -37,9 +37,9 @@ const AuthGuard = ({ children }) =>{
         }}
         >
         {
-        () => (
-            <>{children}</>
-        )
+            () => (
+                <>{children}</>
+            )
         }  
     </Authenticator>
  
