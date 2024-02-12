@@ -110,3 +110,4 @@ export const Payment = () =>{
     )
 }
 
+export default Payment;

@@ -1,43 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes , Navigate} from 'react-router-dom';
-import { Amplify, Auth } from 'aws-amplify';
-import { fetchUserAttributes, getCurrentUser, fetchAuthSession } from 'aws-amplify/auth';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { BrowserRouter as Router} from 'react-router-dom';
+import { Amplify } from 'aws-amplify';
+import { fetchAuthSession, signOut } from 'aws-amplify/auth';
 import { awsExports } from './auth/aws-export'; 
-import { Authenticator } from '@aws-amplify/ui-react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import HomePage from './components/HomePage/HomePage';
-import ProductPage from './components/ProductPage/ProductPage';
-import OrderConfirmation from './components/OrderConfirmation/OrderConfirmation';
-import ComingSoon from './components/ComingSoon/ComingSoon';
-import Cart from './components/Cart/Cart';
 import { update as userUpdate } from './reducers/userSlice';
 import { useDispatch } from 'react-redux';
-import { Checkout } from './components/Checkout/Checkout';
-import { Payment } from './components/Payment/Payment';
-import ProductList from './components/ProductList/ProductList';
-import Categories from './components/Categories/Categories';
-import Orders from './components/Orders/Orders';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { RenderRoutes } from './helper/RenderNavigations';
 
 const GUEST_USER = {
   "userId": "default",
   "email": "guest@mcart.com",
-  "name": "Guest User"
+  "name": "Guest User",
+  "isAuthenticated": false
  }
 
 
 Amplify.configure(awsExports);
+const AuthContext = createContext();
+
+export const AuthData = () => useContext(AuthContext);
 
 const App = () => {
 
   const dispatch = useDispatch();
 
-  const [currUser, setCurrUser] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+  const [currUser, setCurrUser] = useState(GUEST_USER);  
 
   useEffect(() => {
       fetchCurrUserAttributes();
@@ -50,78 +42,45 @@ const App = () => {
         const currUser = {
           "userId": idToken.payload['identities'][0]['userId'],
           "email": idToken.payload['email'],
-          "name": idToken.payload['name']
+          "name": idToken.payload['name'],
+          "isAuthenticated": true,
         }
         dispatch(userUpdate(currUser));
         setCurrUser(currUser);
-        setIsAuthenticated(true);
       }
       else{
-        setIsAuthenticated(false);
         dispatch(userUpdate(GUEST_USER));
         setCurrUser(GUEST_USER);
       }
     } 
     catch (err) {
       console.log(err);
-      setIsAuthenticated(false);
+      setCurrUser(GUEST_USER);
+      dispatch(userUpdate(GUEST_USER));
     }
   }
 
+  async function handleSignOut() {
+    try {
+      await signOut();
+      setCurrUser(GUEST_USER);
+      dispatch(userUpdate(GUEST_USER));
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
+
+
   return (
-    <Authenticator socialProviders={['google', 'facebook']} initialState='signIn' 
-    components={{
-      SignUp: {
-        FormFields() {
-          return (
-            <>
-              <Authenticator.SignUp.FormFields />
-              <div><label>Name</label></div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Please enter your name"
-              />
-            </>
-          );
-        },
-      },
-    }}
-    services={{
-      async validateCustomSignUp(formData) {
-        if (!formData.name) {
-          return {
-            name: 'Name is required',
-          };
-        }
-      },
-    }}
-    >
-      {
-        ({ signOut, _}) => (
-          <Router>
-          <div className="App">
-             <Header signOut={signOut} user={currUser}/>
-            {/* <Header signOut={()=>{}} user={currUser}/> */}
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/products/:value/:key" element={<ProductList />} />
-              <Route path="/product/:id" element={<ProductPage />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/paymentPage" element={<Payment/>} />
-              <Route path="/orderConfirm" element={<OrderConfirmation />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/category" element={<Categories />} />
-              <Route path="/comingSoon" element={<ComingSoon />} />
-              <Route path="*" element={<Navigate to="/comingSoon" />} />
-            </Routes>
-            <Footer />
-          </div>
-        </Router>
-        )
-      }  
-    </Authenticator>
+    <AuthContext.Provider value={{currUser, handleSignOut}}>
+      <Router>
+        <div className="App">
+          <Header/>
+          <RenderRoutes/>
+          <Footer />
+        </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

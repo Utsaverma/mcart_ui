@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { updateCurrentAddress, updateAllAddress, getAllAddress} from '../../reducers/addressSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const Checkout = () => {
+const Checkout = () => {
   const dispatch = useDispatch();
   const existingAddresses = useSelector(getAllAddress);
   const EMPTY_ADDRESS = {
@@ -146,3 +146,5 @@ export const Checkout = () => {
     </div>
   );
 };
+
+export default Checkout;

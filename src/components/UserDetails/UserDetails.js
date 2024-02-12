@@ -1,20 +1,15 @@
 import React from 'react';
 import './UserDetails.css';
-import { useDispatch } from 'react-redux';
-import { update } from '../../reducers/userSlice';;
+import { Link } from 'react-router-dom';
+import { AuthData } from '../../App';
 
-const UserDetails = (props) => {
-  const dispatch = useDispatch();
-
-  const signOut = () =>{
-    dispatch(update({}))
-    props.signOut();
-  }
+const UserDetails = () => {
+  const {currUser, handleSignOut} = AuthData();
 
   return (
     <div className="user-details">
-      <p>Welcome, {props.user.name}</p>
-      <button onClick={signOut}>Sign out</button>
+      <p>Welcome, {currUser.name}</p>
+      {currUser.isAuthenticated ? <button onClick={handleSignOut}>Sign out</button> : <button><Link to="/login" className='notlink'>Sign in</Link></button>}
     </div>
   );
 }

@@ -9,7 +9,7 @@ import { Search } from '../Search/Search';
 import { useSelector } from 'react-redux';
 import { getCart } from '../../reducers/cartSlice';
 
-const Header = (props) => { 
+const Header = () => { 
   const cart = useSelector(getCart);
   return (
     <header className="header">
@@ -29,7 +29,7 @@ const Header = (props) => {
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
           <span className="cart-count">{cart?.length}</span>
         </Link>
-        <UserDetails signOut={props.signOut} user={props.user}/>
+        <UserDetails/>
       </div>
     </header>
   );
