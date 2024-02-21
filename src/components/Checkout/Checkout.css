@@ -1,76 +1,89 @@
 .checkout-container {
-    margin: 5%;
-  }
-  
-  .address-section,
-  .payment-section {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
+  margin: 0% 5%;
+}
 
-  .address-selection{
-    text-align: left;
-    float: left;
-  }
-  .addressRadio{
-    width: max-content;
-  }
-  .addressLabel{
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
-  }
-  .newAddressForm{
-    float: right;
-    width: 50%;
-  }
-  .newAdressLabel{
-    display: inline-block;
-    width: 25%;
-  }
-  .newAddressInput{
-    width: 75%;
-  }
-  .addressToast{
-    width: 28%;
-    border: 0px;
-  }
-  .toast-header{
-    color: green;
-    font-weight: 400;
-    border-bottom: unset;
-  }
-  .addressToast .toast-header .btn-close{
-    font-size: 10px;
-  }
-  .toastContainer .toastSubContainer{
-    position: absolute;
-    right: 0%;
-    top: 50%;
-  }
-  .proceedPaymentBtn .btn-disabled{
-    cursor: not-allowed !important;
-    pointer-events: unset !important;
-  }
-  .notlink{
-    color: white;
-    text-decoration: unset;
-  }
+.address-section,
+.payment-section {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.address-selection {
+  text-align: left;
+  float: left;
+}
+
+.addressRadio {
+  width: max-content;
+}
+
+.addressLabel {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.newAddressForm {
+  float: right;
+  width: 50%;
+}
+
+.newAdressLabel {
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 2%;
+}
+
+
+.newAddressInput {
+  width: 75%;
+}
+
+.addressToast {
+  width: 28%;
+  border: 0px;
+}
+
+.toast-header {
+  color: green;
+  font-weight: 400;
+  border-bottom: unset;
+}
+
+.addressToast .toast-header .btn-close {
+  font-size: 10px;
+}
+
+.toastContainer .toastSubContainer {
+  position: absolute;
+  right: 0%;
+  top: 50%;
+}
+
+.proceedPaymentBtn .btn-disabled {
+  cursor: not-allowed !important;
+  pointer-events: unset !important;
+}
+
+.notlink {
+  color: white;
+  text-decoration: unset;
+}

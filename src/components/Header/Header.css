@@ -3,10 +3,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #f2f2f2;
+  background-color: black;
 }
 
-.left-section, .right-section {
+.left-section,
+.right-section {
   /* Adjust styles for left and right sections */
   /* width:auto; */
   display: contents;
@@ -19,7 +20,8 @@
 
 /* Update the input width */
 .center-section input[type="text"] {
-  width: 400px; /* Adjust the width as desired */
+  width: 80%;
+  /* Adjust the width as desired */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -37,18 +39,36 @@
   /* Add any other styles you need */
 }
 
-.cart-count{
+.cart-count {
   color: crimson;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 20px;
   position: absolute;
   margin-left: -10px;
-  margin-top: -10px;
+  margin-top: -18px;
 }
-.right-section a:not(:first-child){
+
+.right-section a:not(:first-child) {
   margin: 0 10px;
 }
-.mcartTitle{
-  font-size: 24px;
+
+.mcartTitle {
+  font-size: xxx-large;
   font-weight: 700;
+  color: white;
+}
+
+.mcart_logo {
+  height: 70px;
+  width: 120px;
+  border-radius: 10px;
+}
+
+.header_links {
+  color: white;
+  text-decoration: auto;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
 }

@@ -1,3 +1,8 @@
+.items-on-sale-container {
+  background-color: antiquewhite;
+  margin-top: 1%;
+}
+
 .items-on-sale {
   overflow-x: auto;
   white-space: nowrap;
@@ -10,14 +15,15 @@
 }
 
 .section-heading {
-  background-color: #f0f0f0;
+  font-size: 22px;
   padding: 10px;
   font-weight: bold;
-  width: 100%; /* Take full width */
+  width: 100%;
+  /* Take full width */
   z-index: 1;
 }
 
-.sale-items{
+.sale-items {
   /* width: 25%; */
   display: flex;
 }
@@ -27,18 +33,18 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin: 5px;
-  width: 30%; /* Adjust the width of each item as needed */
+  width: 30%;
+  /* Adjust the width of each item as needed */
   vertical-align: top;
 }
 
 .sale-item img {
-  width: 100%; /* Make sure images fill their container */
+  width: 100%;
+  /* Make sure images fill their container */
 }
 
 .item-details {
   padding: 10px;
 }
-.sale-item .product-details-container{
-}
 
-
+.sale-item .product-details-container {}

@@ -1,4 +1,9 @@
 /* Hide default scrollbar */
+.featured-products-container {
+  background-color: antiquewhite;
+  margin-top: 1%;
+}
+
 .featured-products {
   overflow-x: auto;
   padding: 20px;
@@ -13,10 +18,11 @@
 }
 
 .section-heading {
-  background-color: #f0f0f0;
+  font-size: 22px;
   padding: 10px;
   font-weight: bold;
-  width: 100%; /* Take full width */
+  width: 100%;
+  /* Take full width */
   z-index: 1;
 }
 
@@ -31,7 +37,8 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin: 5px;
-  width: 300px; /* Adjust the width of each item as needed */
+  width: 300px;
+  /* Adjust the width of each item as needed */
   vertical-align: top;
 }
 

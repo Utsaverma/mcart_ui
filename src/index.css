@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
-.minHeight{
-  height: 63rem;
+.minHeight {
+  height: 59rem;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.requiredFeild {
+  color: red;
 }

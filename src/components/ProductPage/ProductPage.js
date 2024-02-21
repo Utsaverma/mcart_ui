@@ -125,7 +125,7 @@ const ProductPage = ({ asin, view }) => {
 
   return (
     <>
-      <div className="products-page">
+      <div className={`${id ? "routedComponent" : ""} products-page`}>
         {currProduct && <div className="product-details-container">
           <h2 title={currProduct.title}> {currProduct.title?.length > maxTitleLength ? currProduct.title?.slice(0, maxTitleLength) + "..." : currProduct.title}</h2>
           {

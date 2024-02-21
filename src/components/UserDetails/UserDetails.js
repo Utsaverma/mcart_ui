@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthData } from '../../App';
 
 const UserDetails = () => {
-  const {currUser, handleSignOut} = AuthData();
+  const { currUser, handleSignOut } = AuthData();
 
   return (
     <div className="user-details">

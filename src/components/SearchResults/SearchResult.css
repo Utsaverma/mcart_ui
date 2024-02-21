@@ -1,13 +1,13 @@
 .search-result {
-    padding: 5px 10px;
-    font-size: 13px;
-    text-align: left;
-  }
+  padding: 5px 10px;
+  font-size: 18px;
+  text-align: left;
+}
 
-  .search-result a{
-    color: black;
-  }
-  
-  .search-result:hover {
-    background-color: #efefef;
-  }
+.search-result a {
+  color: black;
+}
+
+.search-result:hover {
+  background-color: #efefef;
+}

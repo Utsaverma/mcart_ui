@@ -9,27 +9,29 @@ import { Search } from '../Search/Search';
 import { useSelector } from 'react-redux';
 import { getCart } from '../../reducers/cartSlice';
 
-const Header = () => { 
+const Header = () => {
   const cart = useSelector(getCart);
   return (
     <header className="header">
       <div className="left-section">
-        <Link to="/"> Home </Link>
+        <Link to="/"> <img src="../../../mcart_logo.png" alt="mcart logo" className="mcart_logo" /> </Link>
         &nbsp; &nbsp;
-        <Link to="/category">Category </Link>
+        <Link to="/" className='header_links'> Home </Link>
+        &nbsp; &nbsp;
+        <Link to="/category" className='header_links'>Category </Link>
       </div>
       <div className="center-section">
         <span className="mcartTitle">Welcome to Mcart</span>
-        <Search/>
+        <Search />
       </div>
       <div className="right-section">
-        <Link to="/orders"> Order Details</Link>
-        <Link to="/profile"> Profile</Link>
-        <Link to="/cart" className="cart-icon-link">
+        <Link to="/orders" className='header_links'> Order Details</Link>
+        <Link to="/profile" className='header_links'> Profile</Link>
+        <Link to="/cart" className="cart-icon-link header_links">
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
           <span className="cart-count">{cart?.length}</span>
         </Link>
-        <UserDetails/>
+        <UserDetails />
       </div>
     </header>
   );

@@ -1,4 +1,8 @@
 /* ProductPage.css */
+.routedComponent {
+  margin-bottom: 15%;
+  margin-top: 3%;
+}
 
 .products-page {
   display: flex;
@@ -9,19 +13,22 @@
 
 .product-details-container {
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 800px;
+  max-width: 30rem;
+  min-width: 30rem;
   width: 100%;
+  min-height: 100%;
   background-color: #fff;
 }
 
 .product-details-container img {
   max-width: 100%;
-  height: 220px;
+  min-height: 9rem;
   width: 220px;
   margin-bottom: 20px;
+  aspect-ratio: 3/2;
 }
 
 .product-details-container h2 {
