@@ -2,7 +2,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PAYMENTS_KEY_MAPPING, checkAllEmptyValues, checkEmptyValues } from "../../helper/utility";
-import { BankPaymentsUserInputs } from "../UserInputs/UserInputs";
+import { PaymentsUserInputs } from "../UserInputs/UserInputs";
 import "../Payment/Payment.css";
 
 export const DirectBankTransfer = ({ handleSubmit }) => {
@@ -42,11 +42,11 @@ export const DirectBankTransfer = ({ handleSubmit }) => {
             <h3>Enter Account Details:</h3>
             {
                 Object.keys(EMPTY_ACCOUNT_DETAILS).map((field, key) => (
-                    <BankPaymentsUserInputs
+                    <PaymentsUserInputs
                         key={key}
                         field={field}
-                        accountDetails={accountDetails}
-                        handleAccountDetailsChange={handleAccountDetailsChange}
+                        details={accountDetails}
+                        handleChange={handleAccountDetailsChange}
                         error={error}
                     />
                 ))

@@ -1,7 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChequePaymentsUserInputs } from "../UserInputs/UserInputs";
+import { PaymentsUserInputs } from "../UserInputs/UserInputs";
 import { PAYMENTS_KEY_MAPPING, checkEmptyValues, checkAllEmptyValues } from "../../helper/utility";
 import "../Payment/Payment.css";
 
@@ -41,11 +41,11 @@ export const ChequePayment = ({ handleSubmit }) => {
             <h3>Enter Cheque Details:</h3>
             {
                 Object.keys(EMPTY_BANK_DETAILS).map((field, key) => (
-                    <ChequePaymentsUserInputs
+                    <PaymentsUserInputs
                         key={key}
                         field={field}
-                        bankDetails={bankDetails}
-                        handleBankDetailsChange={handleBankDetailsChange}
+                        details={bankDetails}
+                        handleChange={handleBankDetailsChange}
                         error={error}
                     />
                 ))

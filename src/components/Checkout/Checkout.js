@@ -4,7 +4,7 @@ import { Form, Toast, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { updateCurrentAddress, updateAllAddress, getAllAddress } from '../../reducers/addressSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { ADDRESS_KEY_MAPPING } from '../../helper/utility';
+import { ADDRESS_KEY_MAPPING, checkAllEmptyValues, checkEmptyValues } from '../../helper/utility';
 import { AddressUserInputs } from '../UserInputs/UserInputs';
 
 const Checkout = () => {
@@ -33,11 +33,13 @@ const Checkout = () => {
   }, [useExistingAddress])
 
   useEffect(() => {
-    if (Object.keys(error).some(key => error[key] !== '' && key !== 'landmark' && key !== 'additionalInstructions')) {
-      setEnableSubmit(false);
+    const { landmark: unusedCol1, additionalInstructions: unusedCol2, ...requiredFieldsAddress } = address;
+    const { landmark, additionalInstructions, ...requiredFieldsErrors } = error;
+    if (checkAllEmptyValues(requiredFieldsErrors) && !checkEmptyValues(requiredFieldsAddress)) {
+      setEnableSubmit(true);
     }
     else {
-      setEnableSubmit(true);
+      setEnableSubmit(false)
     }
   }, [error])
 

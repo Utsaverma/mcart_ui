@@ -21,8 +21,7 @@ export const AddressUserInputs = ({ field, required, handleChange, useExistingAd
 
 }
 
-export const ChequePaymentsUserInputs = ({ field, bankDetails, handleBankDetailsChange, error }) => {
-
+export const PaymentsUserInputs = ({ field, details, handleChange, error }) => {
     return (
         <>
             <Row className="paymentSubDetails">
@@ -30,41 +29,8 @@ export const ChequePaymentsUserInputs = ({ field, bankDetails, handleBankDetails
                 <Col md={4}>
                     <label htmlFor={field}>{PAYMENTS_KEY_MAPPING[field]}<span className='requiredFeild'>*</span></label>
                 </Col>
-                <Col md={4}>
-                    <input type="text" name={field} value={bankDetails.field} onChange={handleBankDetailsChange} required />
-                    {error[field] && <div className="errorMessage">{error[field]}</div>}
-                </Col>
-            </Row>
-        </>
-    )
-}
-
-export const CardPaymentsUserInputs = ({ field, cardDetails, handleCardDetailsChange, error }) => {
-
-    return (
-        <>
-            <Row className="paymentSubDetails">
-                <Col md={2}>
-                    <label htmlFor={field}> {PAYMENTS_KEY_MAPPING[field]}<span className='requiredFeild'>*</span></label>
-                </Col>
-                <Col md={10}>
-                    <input type="text" name={field} value={cardDetails.field} onChange={handleCardDetailsChange} required />
-                    {error[field] && <div className="errorMessage">{error[field]}</div>}
-                </Col>
-            </Row>
-        </>
-    )
-}
-
-export const BankPaymentsUserInputs = ({ field, accountDetails, handleAccountDetailsChange, error }) => {
-    return (
-        <>
-            <Row className="paymentSubDetails">
-                <Col md={4}>
-                    <label htmlFor={field}>{PAYMENTS_KEY_MAPPING[field]}<span className='requiredFeild'>*</span></label>
-                </Col>
-                <Col md={8}>
-                    <input type={INPUT_TYPE_MAPPING[field] ? INPUT_TYPE_MAPPING[field] : "text"} name={field} value={accountDetails.field} onChange={handleAccountDetailsChange} />
+                <Col md={6}>
+                    <input type={INPUT_TYPE_MAPPING[field] ? INPUT_TYPE_MAPPING[field] : "text"} name={field} value={details.field} onChange={handleChange} required />
                     {error[field] && <div className="errorMessage">{error[field]}</div>}
                 </Col>
             </Row>
