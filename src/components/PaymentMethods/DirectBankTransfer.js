@@ -1,65 +1,65 @@
 import { Row, Col, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { PAYMENTS_KEY_MAPPING, checkAllEmptyValues, checkEmptyValues } from "../../helper/utility";
+import { BankPaymentsUserInputs } from "../UserInputs/UserInputs";
 import "../Payment/Payment.css";
 
-export const DirectBankTransfer = ({handleSubmit}) => {
-
-    const [accountDetails, setAccountDetails] = useState({
+export const DirectBankTransfer = ({ handleSubmit }) => {
+    const EMPTY_ACCOUNT_DETAILS = {
         accountNumber: '',
         confirmAccountNumber: '',
         accountHolderName: '',
         ifsc: '',
-    });
+    }
+
+    const [accountDetails, setAccountDetails] = useState(EMPTY_ACCOUNT_DETAILS);
+    const [error, setError] = useState(EMPTY_ACCOUNT_DETAILS);
+    const [enableSubmit, setEnableSubmit] = useState(false);
+
+    useEffect(() => {
+        if (checkAllEmptyValues(error) && !checkEmptyValues(accountDetails)) {
+            setEnableSubmit(true);
+        }
+        else {
+            setEnableSubmit(false)
+        }
+    }, [error])
 
     const handleAccountDetailsChange = (e) => {
         const { name, value } = e.target;
+        if (value?.trim() === '') {
+            setError({ ...error, [name]: `${PAYMENTS_KEY_MAPPING[name] + ' is a required field'}` })
+        }
+        else {
+            setError({ ...error, [name]: '' });
+        }
         setAccountDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
     };
 
     return (
         <div className="directbanktransferContainer">
             <h3>Enter Account Details:</h3>
-            <Row className="paymentSubDetails">
-                <Col md={4}>
-                    <label>Account Number</label>
-                </Col>
-                <Col md={8}>
-                    <input type="password" name="accountNumber" value={accountDetails.accountNumber} onChange={handleAccountDetailsChange} />
-                </Col>
-            </Row>
-            <Row className="paymentSubDetails">
-                <Col md={4}>
-                    <label> Confirm Account Number</label>
-                </Col>
-                <Col md={8}>
-                    <input type="text" name="confirmAccountNumber" value={accountDetails.confirmAccountNumber} onChange={handleAccountDetailsChange} />
-                </Col>
-            </Row>
-            <Row className="paymentSubDetails">
-                <Col md={4}>
-                    <label> IFSC Code</label>
-                </Col>
-                <Col md={4}>
-                    <input type="text" name="ifsc" value={accountDetails.ifsc} onChange={handleAccountDetailsChange} />
-                </Col>
-                <Col md={4}></Col>
-            </Row>
-            <Row className="paymentSubDetails">
-                <Col md={4}>
-                    <label>Account Holder's Name</label>
-                </Col>
-                <Col md={8}>
-                    <input type="text" name="accountHolderName" value={accountDetails.accountHolderName} onChange={handleAccountDetailsChange} />
-                </Col>
-            </Row>
+            {
+                Object.keys(EMPTY_ACCOUNT_DETAILS).map((field, key) => (
+                    <BankPaymentsUserInputs
+                        key={key}
+                        field={field}
+                        accountDetails={accountDetails}
+                        handleAccountDetailsChange={handleAccountDetailsChange}
+                        error={error}
+                    />
+                ))
+            }
             <Row>
                 <Col></Col>
                 <Col>
-                    <Link to="/orderConfirm"><Button className="submitPaymentBtn" onClick={()=>handleSubmit(accountDetails)}>Place Order</Button></Link>
+                    {enableSubmit ? <Link to="/orderConfirm"><Button className="submitPaymentBtn" onClick={() => handleSubmit(accountDetails)}>Place Order</Button></Link> :
+                        <Button className="submitPaymentBtn" disabled>Place Order</Button>
+                    }
                 </Col>
                 <Col></Col>
-            </Row>         
+            </Row>
         </div>
     )
 }

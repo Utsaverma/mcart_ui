@@ -17,6 +17,23 @@ export const ADDRESS_KEY_MAPPING = {
   additionalInstructions: { value: 'Additional Instructions', required: false }
 }
 
+export const PAYMENTS_KEY_MAPPING = {
+  bankName: 'Bank Name',
+  chequeNumber: 'Cheque Number',
+  cardNumber: 'Card Number',
+  expiryDate: 'Expiry Date',
+  cvv: 'CVV',
+  name: 'Name on Card',
+  accountNumber: 'Account Number',
+  confirmAccountNumber: 'Confirm Account Number',
+  accountHolderName: `Account Holder's Name`,
+  ifsc: 'IFSC Code',
+}
+
+export const INPUT_TYPE_MAPPING = {
+  accountNumber: 'password'
+}
+
 export const fetchCurrUserAttributes = async (updateUser) => {
   try {
     const { _, idToken } = (await fetchAuthSession()).tokens ?? {};
@@ -38,3 +55,11 @@ export const fetchCurrUserAttributes = async (updateUser) => {
     updateUser(GUEST_USER);
   }
 }
+
+export const checkEmptyValues = (obj) => {
+  return Object.values(obj).some(value => value === '')
+};
+
+export const checkAllEmptyValues = (obj) => {
+  return Object.values(obj).every(value => value === '');
+};

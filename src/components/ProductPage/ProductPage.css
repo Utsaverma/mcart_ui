@@ -29,6 +29,7 @@
   width: 220px;
   margin-bottom: 20px;
   aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
 .product-details-container h2 {
