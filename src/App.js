@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
-import { fetchAuthSession, signOut } from 'aws-amplify/auth';
-import { awsExports } from './auth/aws-export'; 
+import { signOut } from 'aws-amplify/auth';
+import { awsExports } from './auth/aws-export';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { update as userUpdate } from './reducers/userSlice';
@@ -23,15 +23,15 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const [currUser, setCurrUser] = useState(GUEST_USER);  
+  const [currUser, setCurrUser] = useState(GUEST_USER);
 
-  const updateUser = (user) =>{
+  const updateUser = (user) => {
     setCurrUser(user);
     dispatch(userUpdate(user));
   }
 
   useEffect(() => {
-      fetchCurrUserAttributes(updateUser);
+    fetchCurrUserAttributes(updateUser);
   }, []);
 
   async function handleSignOut() {
@@ -43,15 +43,12 @@ const App = () => {
     }
   }
 
-  
-
-
   return (
-    <AuthContext.Provider value={{currUser, updateUser, handleSignOut}}>
+    <AuthContext.Provider value={{ currUser, updateUser, handleSignOut }}>
       <Router>
         <div className="App">
-          <Header/>
-          <RenderRoutes/>
+          <Header />
+          <RenderRoutes />
           <Footer />
         </div>
       </Router>

@@ -10,17 +10,17 @@ const FeaturedProducts = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getFeaturedProducts();
   }, []);
 
   const getFeaturedProducts = async () => {
     const data = await getItemsfeatured();
-    if(data){
+    if (data) {
       setProducts(data);
       dispatch(updateFeaturedProducts(data));
     }
-    
+
   }
 
   return (
@@ -28,8 +28,8 @@ const FeaturedProducts = () => {
       <div className="section-heading">Featured Products</div>
       <div className="featured-products">
         <div className="featured-items">
-        {products.map((item) => (
-            <ProductPage className="featured-item" key={item['asin']} asin={item['asin']} view="featuredItems"/>
+          {products.map((item) => (
+            <ProductPage className="featured-item" key={item['asin']} asin={item['asin']} view="featuredItems" />
           ))}
         </div>
       </div>

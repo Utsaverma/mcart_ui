@@ -97,7 +97,7 @@ export const Payment = () => {
                         {["paypal", "paytm", "juspay", "razorpay"].includes(paymentMethod) && (
                             <Row>
                                 <Col>
-                                    You will be re-directed to {AVAILABLE_PAYMENT_OPTIONS[paymentMethod]}.com, fo provide requested details
+                                    You will be re-directed to {AVAILABLE_PAYMENT_OPTIONS[paymentMethod]}.com, do provide requested details
                                 </Col>
                             </Row>
                         )}

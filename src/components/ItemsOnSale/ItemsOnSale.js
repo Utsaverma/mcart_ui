@@ -10,19 +10,19 @@ const ItemsOnSale = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getProductsOnSale();
   }, []);
 
   const getProductsOnSale = async () => {
     const data = await getItemsonSale();
-    if(data){
+    if (data) {
       setProducts(data);
       dispatch(updateSaleProducts(data));
     }
-    
+
   }
-  
+
 
   return (
     <div className="items-on-sale-container">
@@ -30,7 +30,7 @@ const ItemsOnSale = () => {
       <div className="items-on-sale">
         <div className="sale-items">
           {products.map((item) => (
-            <ProductPage className="sale-item" key={item['asin']} asin={item['asin']} view="saleItems"/>
+            <ProductPage className="sale-item" key={item['asin']} asin={item['asin']} view="saleItems" />
           ))}
         </div>
       </div>

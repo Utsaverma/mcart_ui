@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomePage.css';
-import ItemsOnSale from '../ItemsOnSale/ItemsOnSale'; 
-import FeaturedProducts from '../FeaturedProducts/FeaturedProducts'; 
+import ItemsOnSale from '../ItemsOnSale/ItemsOnSale';
+import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 
 const HomePage = () => {
 

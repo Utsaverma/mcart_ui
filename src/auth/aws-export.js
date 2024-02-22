@@ -1,4 +1,4 @@
-export const awsExports ={
+export const awsExports = {
   Auth: {
     Cognito: {
       userPoolId: 'ap-south-1_Q38upWDVF',
@@ -21,4 +21,3 @@ export const awsExports ={
     }
   }
 }
-  

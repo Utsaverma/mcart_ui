@@ -8,7 +8,7 @@ import paymentDetailsReducer from './paymentDetailsSlice';
 import ordersReducer from './ordersSlice';
 
 const store = configureStore({
-    reducer:{
+    reducer: {
         products: productsReducer,
         cart: cartReducer,
         user: userReducer,

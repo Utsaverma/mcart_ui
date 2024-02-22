@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-    value: {}
-  };
+  value: {}
+};
 
 export const paymentDetailsSlice = createSlice({
   name: 'paymentDetails',
@@ -19,4 +19,3 @@ export const { updatePaymentDetails } = paymentDetailsSlice.actions;
 export const getpaymentDetails = (state) => state.paymentDetails.value;
 
 export default paymentDetailsSlice.reducer;
-  

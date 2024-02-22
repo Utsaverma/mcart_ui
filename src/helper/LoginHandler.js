@@ -4,7 +4,7 @@ import { fetchCurrUserAttributes } from "./utility";
 
 const LoginHandler = () => {
 
-    const {updateUser} = AuthData();
+    const { updateUser } = AuthData();
 
     useEffect(() => {
         fetchCurrUserAttributes(updateUser);

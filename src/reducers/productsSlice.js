@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    products: [],
-    saleProducts: [],
-    featuredProducts: []
-  };
+  products: [],
+  saleProducts: [],
+  featuredProducts: []
+};
 
 export const productsSlice = createSlice({
   name: 'products',
@@ -32,11 +32,10 @@ export const productsSlice = createSlice({
 });
 
 
-export const { update, append, updateSaleProducts, appendSaleProducts, updateFeaturedProducts, appendFeaturedProducts  } = productsSlice.actions;
+export const { update, append, updateSaleProducts, appendSaleProducts, updateFeaturedProducts, appendFeaturedProducts } = productsSlice.actions;
 
 export const getProducts = (state) => state.products.products;
 export const getSaleProducts = (state) => state.products.saleProducts;
 export const getFeaturedProducts = (state) => state.products.featuredProducts;
 
 export default productsSlice.reducer;
-  

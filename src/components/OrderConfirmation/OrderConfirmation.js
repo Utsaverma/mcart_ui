@@ -27,8 +27,8 @@ const OrderConfirmation = () => {
   const addressDetails = useSelector(getCurrentAddress);
   const userDetails = useSelector(getUser);
 
-  useEffect(() => {    
-    if(localCartItems.length === 0){
+  useEffect(() => {
+    if (localCartItems.length === 0) {
       setLocalCartItems(cartItems);
       const orderDetails = constructDataToPost(cartItems);
       dispatch(updateOrders(orderDetails));
@@ -36,16 +36,16 @@ const OrderConfirmation = () => {
     }
   }, []);
 
-  useEffect(()=>{
-    if(localCartItems.length !== 0){
+  useEffect(() => {
+    if (localCartItems.length !== 0) {
       dispatch(emptyCart(''));
     }
-    
+
   }, [localCartItems]);
 
-  const constructDataToPost = (cartVals) =>{
+  const constructDataToPost = (cartVals) => {
     let item = constructMetaData(cartVals);
-    item['Products']= addProductDetails(cartVals);
+    item['Products'] = addProductDetails(cartVals);
     item['ShippingAddress'] = addAddressDetails();
     item['BillingAddress'] = addAddressDetails();
     addPaymentDetails(item);
@@ -60,13 +60,13 @@ const OrderConfirmation = () => {
       "ShippingMethod": "Standard",
       "DeliveryDate": deliveryDate,
       "Status": "Pending",
-      "TotalAmount":calculateTotalAmount(cartVals).toFixed(2).toString()
+      "TotalAmount": calculateTotalAmount(cartVals).toFixed(2).toString()
     }
   }
 
   const addProductDetails = (cartVals) => {
     let products = []
-    cartVals.forEach(currProd =>{
+    cartVals.forEach(currProd => {
       let item = {
         "ProductID": currProd['asin'],
         "ProductName": currProd['title'],
@@ -126,12 +126,12 @@ const OrderConfirmation = () => {
   return (
     <div className="OrderConfirmation-page minHeight">
       <h2>Your order has been placed</h2>
-      <CartAddressSummary cartItems={localCartItems}/>
-      <h2>Total amount paid ${paymentDetails.amount} via {paymentDetails.method} payment <span className="more-details"onClick={handleShow}>
+      <CartAddressSummary cartItems={localCartItems} />
+      <h2>Total amount paid ${paymentDetails.amount} via {paymentDetails.method} payment <span className="more-details" onClick={handleShow}>
         more details
       </span></h2>
 
-      
+
       <Link to="/">
         <Button>
           Back to Shopping
@@ -152,51 +152,51 @@ const OrderConfirmation = () => {
             <Col> {paymentDetails.method}</Col>
           </Row>
           {
-            paymentDetails.method==='card' && <>
-            <Row>
-              <Col> Card ending with </Col>
-              <Col>{paymentDetails.details.cardNumber?.slice(-4)}</Col>
-            </Row>
-            <Row>
-              <Col> Card belongs to </Col>
-              <Col>{paymentDetails.details.name}</Col>
-            </Row>
+            paymentDetails.method === 'card' && <>
+              <Row>
+                <Col> Card ending with </Col>
+                <Col>{paymentDetails.details.cardNumber?.slice(-4)}</Col>
+              </Row>
+              <Row>
+                <Col> Card belongs to </Col>
+                <Col>{paymentDetails.details.name}</Col>
+              </Row>
             </>
           }
           {
-            paymentDetails.method==='directbanktransfer' && <>
-            <Row>
-              <Col> Account Number </Col>
-              <Col>{paymentDetails.details.accountNumber?.slice(-4)}</Col>
-            </Row>
-            <Row>
-              <Col> Account Holder Name </Col>
-              <Col>{paymentDetails.details.accountHolderName}</Col>
-            </Row>
-            <Row>
-              <Col> IFSC Code </Col>
-              <Col>{paymentDetails.details.ifsc}</Col>
-            </Row>
+            paymentDetails.method === 'directbanktransfer' && <>
+              <Row>
+                <Col> Account Number </Col>
+                <Col>{paymentDetails.details.accountNumber?.slice(-4)}</Col>
+              </Row>
+              <Row>
+                <Col> Account Holder Name </Col>
+                <Col>{paymentDetails.details.accountHolderName}</Col>
+              </Row>
+              <Row>
+                <Col> IFSC Code </Col>
+                <Col>{paymentDetails.details.ifsc}</Col>
+              </Row>
             </>
           }
           {
-            paymentDetails.method==='cheque' && <>
-            <Row>
-              <Col> Cheque ending with </Col>
-              <Col>{paymentDetails.details.chequeNumber?.slice(-4)}</Col>
-            </Row>
-            <Row>
-              <Col> Bank Name </Col>
-              <Col>{paymentDetails.details.bankName}</Col>
-            </Row>
+            paymentDetails.method === 'cheque' && <>
+              <Row>
+                <Col> Cheque ending with </Col>
+                <Col>{paymentDetails.details.chequeNumber?.slice(-4)}</Col>
+              </Row>
+              <Row>
+                <Col> Bank Name </Col>
+                <Col>{paymentDetails.details.bankName}</Col>
+              </Row>
             </>
           }
           {
-            paymentDetails.method==='cod' && <>
-            Cash On Delivery
+            paymentDetails.method === 'cod' && <>
+              Cash On Delivery
             </>
           }
-          </Modal.Body>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

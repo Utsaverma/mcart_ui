@@ -38,9 +38,9 @@ const Cart = () => {
 
   return (
     <div className="Cart-page minHeight">
-      { cartItems.length !== 0 && <div className="checkoutButton">
+      {cartItems.length !== 0 && <div className="checkoutButton">
         <Link to="/checkout"><button className="btn btn-primary">Proceed to checkout</button></Link>
-        </div>
+      </div>
       }
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
@@ -71,7 +71,7 @@ const Cart = () => {
                     <button className="btn btn-dec" onClick={() => decrementCounter(item.asin)}>-</button>
                     {item.quantity}
                     <button className="btn btn-inc" onClick={() => incrementCounter(item.asin)}>+</button>
-                    </Col>
+                  </Col>
                   <Col md={2} className="cartBody">${(item.price * item.quantity).toFixed(2)}</Col>
                 </Row>
               ))}

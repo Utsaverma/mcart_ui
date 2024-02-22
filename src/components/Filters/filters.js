@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import "./filters.css";
 import { Button } from "react-bootstrap";
 
-export const Filters = ({filters, setFilters}) => {
+export const Filters = ({ filters, setFilters }) => {
 
     const handleFilters = (e) => {
         const { name, value } = e.target;
-        console.group(name,value)
+        console.group(name, value)
         setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
     };
 
@@ -17,7 +17,7 @@ export const Filters = ({filters, setFilters}) => {
         })
     }
 
-    return(
+    return (
         <div className="FiltersContainer">
             <div className="genderSelection">
                 <span> Quick Filters</span>
@@ -61,8 +61,8 @@ export const Filters = ({filters, setFilters}) => {
                 />
                 <label className="sortLabel">Desc</label>
             </div>
-        
-          <Button variant="primary" className="clearFilters" onClick={clearFilters}>clear</Button>
+
+            <Button variant="primary" className="clearFilters" onClick={clearFilters}>clear</Button>
         </div>
 
     )

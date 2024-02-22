@@ -15,17 +15,17 @@ import LoginHandler from "./LoginHandler";
 
 
 export const nav = [
-     { path:     "/",                        element: <HomePage />,                                  shouldBeAuthenticated: false  },
-     { path:     "/products/:value/:key",    element: <ProductList />,                               shouldBeAuthenticated: false  },
-     { path:     "/product/:id",             element: <ProductPage />,                               shouldBeAuthenticated: false  },
-     { path:     "/cart",                    element: <Cart />,                                      shouldBeAuthenticated: false  },
-     { path:     "/category",                element: <Categories />,                                shouldBeAuthenticated: false  },
-     { path:     "/comingSoon",              element: <ComingSoon />,                                shouldBeAuthenticated: false  },
-     { path:     "/checkout",                element: <AuthGuard><Checkout /></AuthGuard>,           shouldBeAuthenticated: true  },
-     { path:     "/paymentPage",             element: <AuthGuard><Payment /></AuthGuard>,            shouldBeAuthenticated: true  },
-     { path:     "/orderConfirm",            element: <AuthGuard><OrderConfirmation /></AuthGuard>,  shouldBeAuthenticated: true  },
-     { path:     "/orders",                  element: <AuthGuard><Orders /></AuthGuard>,             shouldBeAuthenticated: true  },
-     { path:     "/login",                   element: <AuthGuard><LoginHandler/></AuthGuard>,                shouldBeAuthenticated: true  },
-     { path:     "*",                        element: <Navigate to="/comingSoon" />,                 shouldBeAuthenticated: false  },
+     { path: "/", element: <HomePage />, shouldBeAuthenticated: false },
+     { path: "/products/:value/:key", element: <ProductList />, shouldBeAuthenticated: false },
+     { path: "/product/:id", element: <ProductPage />, shouldBeAuthenticated: false },
+     { path: "/cart", element: <Cart />, shouldBeAuthenticated: false },
+     { path: "/category", element: <Categories />, shouldBeAuthenticated: false },
+     { path: "/comingSoon", element: <ComingSoon />, shouldBeAuthenticated: false },
+     { path: "/checkout", element: <AuthGuard><Checkout /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/paymentPage", element: <AuthGuard><Payment /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/orderConfirm", element: <AuthGuard><OrderConfirmation /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/orders", element: <AuthGuard><Orders /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/login", element: <AuthGuard><LoginHandler /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "*", element: <Navigate to="/comingSoon" />, shouldBeAuthenticated: false },
 ]
 
