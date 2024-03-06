@@ -1,7 +1,8 @@
 import { MOCKED_DATA } from "./mocked_data";
 import { MOCK } from "./config";
 
-const BASE_URL = 'http://localhost:5000/mcart/v1/products';
+// const BASE_URL = 'http://localhost:5000/mcart/v1/products';
+const BASE_URL = 'http://mcart-load-balancer-241154508.ap-south-1.elb.amazonaws.com/mcart/v1/products';
 
 export const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3;
 

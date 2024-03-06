@@ -10,6 +10,8 @@ import { getCart, addItemToCart, removeItemFromCart } from '../../reducers/cartS
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductById } from '../../services/productServices';
 import { Toast } from 'react-bootstrap';
+import { SideBySideMagnifier, MagnifierContainer, MagnifierPreview, MagnifierZoom } from "react-image-magnifiers";
+import classes from "classnames";
 import './ProductPage.css'; // Import the CSS file
 
 const ProductPage = ({ asin, view }) => {
@@ -138,6 +140,20 @@ const ProductPage = ({ asin, view }) => {
             view === "saleItems" && <span className="onsale-badge">On Sale</span>
           }
           <img src={currProduct.img_url} alt={currProduct.title} />
+
+          {/* <SideBySideMagnifier
+            className={classes("magnifier", true)}
+            imageSrc={currProduct.img_url}
+            touchActivation="tap"
+            alwaysInPlace={true}
+            transitionSpeed={0.7}
+          /> */}
+          {/* <MagnifierContainer>
+            <div className="example-class">
+              <MagnifierPreview imageSrc={currProduct.img_url} />
+            </div>
+            <MagnifierZoom imageSrc={currProduct.img_url} />
+          </MagnifierContainer> */}
           <div className="stars">{currProduct.stars ? renderStars() : "Not Rated"}</div>
           <p>Available at: &nbsp; <span className='listedPrice'>${currProduct.list_price}</span> &nbsp; ${currProduct.price}</p>
           <p>{currProduct.category_name} - {currProduct.sub_category_name}</p>

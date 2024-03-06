@@ -6,6 +6,7 @@ import userReducer from './userSlice';
 import addressReducer from './addressSlice';
 import paymentDetailsReducer from './paymentDetailsSlice';
 import ordersReducer from './ordersSlice';
+import themeReducer from './ThemeSlice';
 
 const store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
         user: userReducer,
         address: addressReducer,
         paymentDetails: paymentDetailsReducer,
-        order: ordersReducer
+        order: ordersReducer,
+        theme: themeReducer
     }
 });
 

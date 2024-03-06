@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Categories from '../Categories/Categories';
 import UserDetails from '../UserDetails/UserDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import './Header.css'; // General header styles
 import { Search } from '../Search/Search';
 import { useSelector } from 'react-redux';
 import { getCart } from '../../reducers/cartSlice';
+import { ThemeSelection } from '../ThemeSelection/ThemeSelection';
+import './Header.css'; // General header styles
+import { getCurrentTheme } from '../../reducers/ThemeSlice';
 
 const Header = () => {
   const cart = useSelector(getCart);
+  const currentTheme = useSelector(getCurrentTheme);
+
   return (
-    <header className="header">
+    <header className={`header ${currentTheme}`}>
       <div className="left-section">
         <Link to="/"> <img src="../../../mcart_logo.png" alt="mcart logo" className="mcart_logo" /> </Link>
         &nbsp; &nbsp;
@@ -32,6 +35,7 @@ const Header = () => {
           <span className="cart-count">{cart?.length}</span>
         </Link>
         <UserDetails />
+        <ThemeSelection />
       </div>
     </header>
   );

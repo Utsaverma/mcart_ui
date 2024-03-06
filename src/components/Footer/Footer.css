@@ -1,5 +1,5 @@
 .footer {
-  background-color: black;
+
   padding: 30px 30px;
   text-align: center;
   position: relative;
@@ -8,9 +8,26 @@
   margin-top: 10px;
 }
 
+.footer.dark {
+  background-color: black;
+}
+
+.footer.light {
+  background-color: burlywood;
+}
+
 .footer span,
 .footer a {
   margin: 0 20px;
-  color: white;
   font-size: 18px;
+}
+
+.footer.dark span,
+.footer.dark a {
+  color: white;
+}
+
+.footer.light span,
+.footer.light a {
+  color: black;
 }

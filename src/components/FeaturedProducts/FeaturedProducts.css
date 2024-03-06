@@ -1,7 +1,15 @@
 /* Hide default scrollbar */
 .featured-products-container {
-  background-color: antiquewhite;
   margin-top: 1%;
+}
+
+.featured-products-container.dark {
+  background-color: antiquewhite;
+}
+
+.featured-products-container.light {
+  background-color: olivedrab;
+  color: white;
 }
 
 .featured-products {

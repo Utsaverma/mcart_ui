@@ -3,7 +3,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
+
+}
+
+.header.dark {
   background-color: black;
+}
+
+.header.light {
+  background-color: burlywood;
 }
 
 .left-section,
@@ -65,10 +73,23 @@
 }
 
 .header_links {
-  color: white;
   text-decoration: auto;
   font-weight: 700;
   font-size: 20px;
   margin-left: 0.5%;
   margin-right: 0.5%;
+}
+
+.dark .header_links,
+.dark .mcartTitle,
+.dark .user-details {
+  color: white;
+
+}
+
+
+.light .header_links,
+.light .mcartTitle,
+.light .user-details {
+  color: black;
 }

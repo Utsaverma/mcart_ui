@@ -1,6 +1,14 @@
 .items-on-sale-container {
-  background-color: antiquewhite;
   margin-top: 1%;
+}
+
+.items-on-sale-container.dark {
+  background-color: antiquewhite;
+}
+
+.items-on-sale-container.light {
+  background-color: olivedrab;
+  color: white;
 }
 
 .items-on-sale {

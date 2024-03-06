@@ -1,7 +1,8 @@
 import { MOCKED_ORDERS } from "./mocked_data";
 import { MOCK } from "./config";
 
-const BASE_URL = 'http://localhost:5001/mcart/v1/orders';
+// const BASE_URL = 'http://localhost:5001/mcart/v1/orders';
+const BASE_URL = 'http://mcart-load-balancer-241154508.ap-south-1.elb.amazonaws.com:5001/mcart/v1/orders';
 
 export const getOrderByUserId = async (userId) => {
     if (MOCK) {

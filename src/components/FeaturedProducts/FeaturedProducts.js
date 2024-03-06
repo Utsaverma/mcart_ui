@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { updateFeaturedProducts } from '../../reducers/productsSlice';
 import './FeaturedProducts.css';
 
-const FeaturedProducts = () => {
+const FeaturedProducts = ({ currentTheme }) => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
 
@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <div className="featured-products-container">
+    <div className={`featured-products-container ${currentTheme}`}>
       <div className="section-heading">Featured Products</div>
       <div className="featured-products">
         <div className="featured-items">

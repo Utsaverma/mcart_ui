@@ -5,7 +5,7 @@ import ProductPage from '../ProductPage/ProductPage';
 import { useDispatch } from 'react-redux';
 import { updateSaleProducts } from '../../reducers/productsSlice';
 
-const ItemsOnSale = () => {
+const ItemsOnSale = ({ currentTheme }) => {
 
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
@@ -25,7 +25,7 @@ const ItemsOnSale = () => {
 
 
   return (
-    <div className="items-on-sale-container">
+    <div className={`items-on-sale-container ${currentTheme}`}>
       <div className="section-heading">Items on Sale</div>
       <div className="items-on-sale">
         <div className="sale-items">
