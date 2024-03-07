@@ -13,8 +13,8 @@ export const awsExports = {
             'openid',
             'profile'
           ],
-          redirectSignIn: ['https://d1az88rylhhzb4.cloudfront.net/', 'http://localhost:3000/'],
-          redirectSignOut: ['https://d1az88rylhhzb4.cloudfront.net/', 'http://localhost:3000/'],
+          redirectSignIn: ['https://d1az88rylhhzb4.cloudfront.net/', 'http://localhost:3000/','https://ui.mcart.shop/'],
+          redirectSignOut: ['https://d1az88rylhhzb4.cloudfront.net/', 'http://localhost:3000/', 'https://ui.mcart.shop/'],
           responseType: 'code'
         }
       }
