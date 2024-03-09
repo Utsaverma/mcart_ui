@@ -32,3 +32,10 @@ code {
 .react-multiple-carousel__arrow--right {
   right: 0px !important;
 }
+.largeText{
+  font-size: large;
+  font-weight: 600;
+}
+.crossedText{
+  text-decoration: line-through;
+}

@@ -30,9 +30,9 @@ const Footer = () => {
         </Col>
         <Col>
         <div class="sub-title">Connect With Us</div>
-        <div><a href="/#">Facebook</a></div>
-        <div><a href="/#">X (formerly twitter)</a></div>
-        <div><a href="/#">Instagram</a></div>
+        <div><a href="https://www.facebook.com/mcartdotshop" target='_blank' rel="noreferrer">Facebook</a></div>
+        <div><a href="https://twitter.com/mcartdotshop" target='_blank' rel="noreferrer">X (formerly twitter)</a></div>
+        <div><a href="https://www.instagram.com/mcart.shop" target='_blank' rel="noreferrer">Instagram</a></div>
         
         </Col>
         <Col>

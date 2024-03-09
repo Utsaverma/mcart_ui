@@ -17,9 +17,9 @@ export const CartAddressSummary = ({ cartItems }) => {
                                     <img className="paymentImages" src={item.img_url} alt={item.title} />
                                 </span>
                                 <span>
-                                    <span title={item.title}>{item.title?.length > 50 ? item.title?.slice(0, 50) + "..." : item.title}</span>
+                                    <span title={item.title} class="largeText">{item.title?.length > 50 ? item.title?.slice(0, 50) + "..." : item.title}</span>
                                     <br />
-                                    <span>Available at: ${item.price} &nbsp; &nbsp; Qty {item.quantity}</span>
+                                    <span>Available at: <span class="crossedText">${item.list_price}</span>&nbsp;<span class="largeText">${item.price}</span> &nbsp; &nbsp; Qty {item.quantity}</span>
                                 </span>
 
                             </li>

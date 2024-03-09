@@ -39,6 +39,7 @@ button {
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .newAddressForm {
@@ -89,4 +90,24 @@ button {
 .notlink {
   color: white;
   text-decoration: unset;
+}
+.address-value{
+  border: 1px solid black;
+  border-radius: 20px;
+  max-width: fit-content;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+.new-address-value{
+  max-width: fit-content;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+.address-value:focus-within, .address-value:active {
+  border: 3px solid black;
+}
+.edit-btn{
+  padding-top: 4%;
 }

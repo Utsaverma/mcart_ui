@@ -65,14 +65,14 @@ const Cart = () => {
                       <div className="cartTitles">{item.title}</div>
                     </div>
                   </Col>
-                  <Col md={2} className="cartBody">${item.list_price ? item.list_price : item.price}</Col>
-                  <Col md={2} className="cartBody">${item.price}</Col>
+                  <Col md={2} className="cartBody"><span>${item.list_price ? item.list_price : item.price}</span></Col>
+                  <Col md={2} className="cartBody"><span>${item.price}</span></Col>
                   <Col md={2} className="cartBody">
-                    <button className="btn btn-dec" onClick={() => decrementCounter(item.asin)}>-</button>
+                    <span><button className="btn btn-dec" onClick={() => decrementCounter(item.asin)}>-</button>
                     {item.quantity}
-                    <button className="btn btn-inc" onClick={() => incrementCounter(item.asin)}>+</button>
+                    <button className="btn btn-inc" onClick={() => incrementCounter(item.asin)}>+</button></span>
                   </Col>
-                  <Col md={2} className="cartBody">${(item.price * item.quantity).toFixed(2)}</Col>
+                  <Col md={2} className="cartBody"><span>${(item.price * item.quantity).toFixed(2)}</span></Col>
                 </Row>
               ))}
             </tbody>

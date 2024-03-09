@@ -7,7 +7,7 @@ const BASE_URL = 'http://localhost:5000/mcart/v1/products';
 export const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3;
 
 export const DEFAULT_START_INDEX = 0
-export const DEFAULT_SIZE = 30
+export const DEFAULT_SIZE = 10
 
 export const getProductById = async (id) => {
     if (MOCK) {
@@ -129,20 +129,20 @@ export const getProductsByCategory = async (value, startIndex = DEFAULT_START_IN
 
 export const getItemsonSale = async () => {
     if (MOCK) {
-        return MOCKED_DATA;
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
     else {
         // call api
-        return MOCKED_DATA;
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
 }
 
 export const getItemsfeatured = async () => {
     if (MOCK) {
-        return MOCKED_DATA;
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
     else {
         // call api
-        return MOCKED_DATA;
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
 }

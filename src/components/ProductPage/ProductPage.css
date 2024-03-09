@@ -23,7 +23,7 @@
   background-color: #fff;
 }
 
-.product-details-container img {
+.product-details-container .product_images {
   max-width: 100%;
   min-height: 9rem;
   width: 220px;
@@ -48,9 +48,15 @@
   color: #fff;
   padding: 10px 20px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s ease;
+}
+.amazon_logo{
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  height: 25px;
 }
 
 .product-details-container button:hover {
@@ -108,11 +114,17 @@
   top: -30px;
 }
 
-.itemAddedToCart {
+.itemAddedToCart, .itemAddedToWishlist {
   position: absolute;
   top: 10px;
   right: 20%;
   overflow-wrap: break-word;
   width: max-content !important;
   background-color: green !important;
+}
+.wishlist_icon{
+  margin-right: 5%;
+}
+.comparison_icon{
+  margin-left: 5%;
 }

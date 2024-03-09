@@ -81,7 +81,7 @@ const Checkout = () => {
         <Col><div className="address-selection">
           <h3>Choose Address</h3>
           {existingAddresses.map((addr, _) => (
-            <div key={addr.addressId}>
+            <Row><Col lg={8}key={addr.addressId} className='address-value'>
               <input
                 className="addressRadio"
                 type="radio"
@@ -97,9 +97,12 @@ const Checkout = () => {
                 <br />
                 {addr.phoneNo}
               </label>
-            </div>
+            </Col>
+            <Col lg={2} className='edit-btn'><Button>Edit/Delete</Button></Col>
+            </Row>
           ))}
-          <div>
+          <Row>
+          <Col md={3} className='new-address-value'>
             <input
               className="addressRadio"
               type="radio"
@@ -109,7 +112,8 @@ const Checkout = () => {
               onChange={() => setUseExistingAddress(false)}
             />
             <label className="addressLabel" htmlFor="addNewAddress">Add a new address</label>
-          </div>
+          </Col>
+          </Row>
           <div className="proceedPaymentBtn">
             {
               useExistingAddress ?

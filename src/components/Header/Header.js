@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import UserDetails from '../UserDetails/UserDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Search } from '../Search/Search';
 import { useSelector } from 'react-redux';
 import { getCart } from '../../reducers/cartSlice';
@@ -29,6 +29,7 @@ const Header = () => {
         <Search />
       </div>
       <div className="right-section">
+        <a href="https://support.mcart.shop" target='_blank' rel="noreferrer"><FontAwesomeIcon icon={faCircleQuestion} className="header_links support_icon" title="Need help?"/></a>
         <Link to="/orders" className='header_links'> Order Details</Link>
         <Profile/>
         <Link to="/cart" className="cart-icon-link header_links">
