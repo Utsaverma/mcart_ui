@@ -1,6 +1,6 @@
 /* ProductPage.css */
 .routedComponent {
-  margin-bottom: 15%;
+  margin-bottom: 3%;
   margin-top: 3%;
 }
 
@@ -28,7 +28,7 @@
   min-height: 9rem;
   width: 220px;
   margin-bottom: 20px;
-  aspect-ratio: 3/2;
+  aspect-ratio: 4/5;
   object-fit: contain;
 }
 

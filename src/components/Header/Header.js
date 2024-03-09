@@ -9,6 +9,7 @@ import { getCart } from '../../reducers/cartSlice';
 import { ThemeSelection } from '../ThemeSelection/ThemeSelection';
 import './Header.css'; // General header styles
 import { getCurrentTheme } from '../../reducers/ThemeSlice';
+import Profile from '../Profile/Profile';
 
 const Header = () => {
   const cart = useSelector(getCart);
@@ -29,7 +30,7 @@ const Header = () => {
       </div>
       <div className="right-section">
         <Link to="/orders" className='header_links'> Order Details</Link>
-        <Link to="/profile" className='header_links'> Profile</Link>
+        <Profile/>
         <Link to="/cart" className="cart-icon-link header_links">
           <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
           <span className="cart-count">{cart?.length}</span>

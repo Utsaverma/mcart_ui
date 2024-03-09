@@ -28,7 +28,7 @@ button {
 
 .address-selection {
   text-align: left;
-  float: left;
+  /* float: left; */
 }
 
 .addressRadio {
@@ -42,8 +42,8 @@ button {
 }
 
 .newAddressForm {
-  float: right;
-  width: 50%;
+  /* float: right; */
+  /* width: 50%; */
 }
 
 .newAdressLabel {
@@ -81,6 +81,9 @@ button {
 .proceedPaymentBtn .btn-disabled {
   cursor: not-allowed !important;
   pointer-events: unset !important;
+}
+.proceedPaymentBtn{
+  margin-bottom: 17%;
 }
 
 .notlink {

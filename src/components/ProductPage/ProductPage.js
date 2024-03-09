@@ -9,7 +9,7 @@ import { getProducts, getFeaturedProducts, getSaleProducts } from '../../reducer
 import { getCart, addItemToCart, removeItemFromCart } from '../../reducers/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductById } from '../../services/productServices';
-import { Toast } from 'react-bootstrap';
+import { Toast, Carousel } from 'react-bootstrap';
 import { SideBySideMagnifier, MagnifierContainer, MagnifierPreview, MagnifierZoom } from "react-image-magnifiers";
 import classes from "classnames";
 import './ProductPage.css'; // Import the CSS file
@@ -139,7 +139,18 @@ const ProductPage = ({ asin, view }) => {
           {
             view === "saleItems" && <span className="onsale-badge">On Sale</span>
           }
-          <img src={currProduct.img_url} alt={currProduct.title} />
+          <Carousel data-bs-theme="dark">
+            <Carousel.Item>
+              <img src={currProduct.img_url} alt={currProduct.title} />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={currProduct.img_url} alt={currProduct.title} />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={currProduct.img_url} alt={currProduct.title} />
+            </Carousel.Item>
+          </Carousel>
+          
 
           {/* <SideBySideMagnifier
             className={classes("magnifier", true)}

@@ -1,0 +1,16 @@
+.Profile-page {
+    padding: 20px;
+  }
+  .profile_nav .dropdown-item{
+    margin: 0px !important;
+  }
+  
+.dark #collapsible-nav-dropdown{
+  color: white;
+}
+.light #collapsible-nav-dropdown{
+  color: black;
+}
+.bg-body-tertiary{
+  --bs-bg-opacity: 0 !important
+}

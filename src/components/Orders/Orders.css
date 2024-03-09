@@ -1,3 +1,4 @@
 .OrdersComponent {
     height: 62rem;
+    overflow-y: auto;
 }

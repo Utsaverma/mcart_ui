@@ -77,75 +77,81 @@ const Checkout = () => {
   return (
     <div className="checkout-container minHeight">
       <h2>Checkout</h2>
-      <div className="address-selection">
-        <h3>Choose Address</h3>
-        {existingAddresses.map((addr, _) => (
-          <div key={addr.addressId}>
+      <Row>
+        <Col><div className="address-selection">
+          <h3>Choose Address</h3>
+          {existingAddresses.map((addr, _) => (
+            <div key={addr.addressId}>
+              <input
+                className="addressRadio"
+                type="radio"
+                id={`address_${addr.addressId}`}
+                name="addressRadio"
+                checked={useExistingAddress === addr.addressId}
+                onChange={() => handleRadioChange(addr.addressId)}
+              />
+              <label className="addressLabel" htmlFor={`address_${addr.addressId}`}>
+                {addr.fullName}
+                <br />
+                {addr.address}, {addr.city}, {addr.zipCode}
+                <br />
+                {addr.phoneNo}
+              </label>
+            </div>
+          ))}
+          <div>
             <input
               className="addressRadio"
               type="radio"
-              id={`address_${addr.addressId}`}
+              id="addNewAddress"
               name="addressRadio"
-              checked={useExistingAddress === addr.addressId}
-              onChange={() => handleRadioChange(addr.addressId)}
+              checked={!useExistingAddress}
+              onChange={() => setUseExistingAddress(false)}
             />
-            <label className="addressLabel" htmlFor={`address_${addr.addressId}`}>
-              {addr.fullName}
-              <br />
-              {addr.address}, {addr.city}, {addr.zipCode}
-              <br />
-              {addr.phoneNo}
-            </label>
+            <label className="addressLabel" htmlFor="addNewAddress">Add a new address</label>
           </div>
-        ))}
-        <div>
-          <input
-            className="addressRadio"
-            type="radio"
-            id="addNewAddress"
-            name="addressRadio"
-            checked={!useExistingAddress}
-            onChange={() => setUseExistingAddress(false)}
-          />
-          <label className="addressLabel" htmlFor="addNewAddress">Add a new address</label>
-        </div>
-        <div className="proceedPaymentBtn">
-          {
-            useExistingAddress ?
-              <Button className="btn-active"><Link to="/paymentPage" className='notlink'>Initiate Payment</Link></Button> :
-              <Button className="btn-disabled" disabled>Initiate Payment</Button>
-          }
-        </div>
-      </div>
-      <div className='newAddressForm'>
-
-        {
-          !useExistingAddress && <Form onSubmit={handleSubmit}>
-
-            <div className="address-section">
-              {
-                Object.keys(ADDRESS_KEY_MAPPING).map((field, key) => (
-                  < AddressUserInputs
-                    key={key}
-                    field={field}
-                    required={ADDRESS_KEY_MAPPING[field]?.required}
-                    handleChange={handleChange}
-                    useExistingAddress={useExistingAddress}
-                    existingAddresses={existingAddresses}
-                    address={address}
-                    error={error}
-                  />
-                ))
-              }
-            </div>
+          <div className="proceedPaymentBtn">
             {
-              enableSubmit ? <Button className="btn-active" type="submit">Confirm</Button>
-                :
-                <Button className="btn-disabled" type="submit" disabled>Confirm</Button>
+              useExistingAddress ?
+                <Button className="btn-active"><Link to="/paymentPage" className='notlink'>Initiate Payment</Link></Button> :
+                <Button className="btn-disabled" disabled>Initiate Payment</Button>
             }
-          </Form>
-        }
-      </div>
+          </div>
+        </div>
+      </Col>
+        <Col>
+          <div className='newAddressForm'>
+            {
+              !useExistingAddress && <Form onSubmit={handleSubmit}>
+
+                <div className="address-section">
+                  {
+                    Object.keys(ADDRESS_KEY_MAPPING).map((field, key) => (
+                      < AddressUserInputs
+                        key={key}
+                        field={field}
+                        required={ADDRESS_KEY_MAPPING[field]?.required}
+                        handleChange={handleChange}
+                        useExistingAddress={useExistingAddress}
+                        existingAddresses={existingAddresses}
+                        address={address}
+                        error={error}
+                      />
+                    ))
+                  }
+                </div>
+                {
+                  enableSubmit ? <Button className="btn-active" type="submit">Confirm</Button>
+                    :
+                    <Button className="btn-disabled" type="submit" disabled>Confirm</Button>
+                }
+              </Form>
+            }
+            </div>
+          </Col>
+      </Row>
+      
+      
       <Row className="toastContainer">
         <Col md={6} className="mb-2 toastSubContainer" position='top-end' >
           <Toast className="addressToast" show={showToast} onClose={toggleShowToast} delay={3000} autohide>

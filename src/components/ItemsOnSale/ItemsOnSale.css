@@ -3,23 +3,12 @@
 }
 
 .items-on-sale-container.dark {
-  background-color: antiquewhite;
+  background-color: darkgray;
 }
 
 .items-on-sale-container.light {
-  background-color: olivedrab;
-  color: white;
-}
-
-.items-on-sale {
-  overflow-x: auto;
-  white-space: nowrap;
-  /* scrollbar-width: none;
-  -ms-overflow-style: none;  */
-}
-
-.items-on-sale::-webkit-scrollbar {
-  /* display: none;  */
+  background-color: bisque;
+  color: black;
 }
 
 .section-heading {
@@ -31,10 +20,6 @@
   z-index: 1;
 }
 
-.sale-items {
-  /* width: 25%; */
-  display: flex;
-}
 
 .sale-item {
   display: inline-block;
@@ -54,5 +39,3 @@
 .item-details {
   padding: 10px;
 }
-
-.sale-item .product-details-container {}

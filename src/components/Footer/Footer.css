@@ -1,33 +1,90 @@
 .footer {
 
-  padding: 30px 30px;
   text-align: center;
   position: relative;
   bottom: -10%;
   width: 100%;
   margin-top: 10px;
 }
+.footer .mcart_logo{
+  margin: 0 5%;
+}
 
 .footer.dark {
-  background-color: black;
+  background-color: #232F3E;
 }
 
 .footer.light {
   background-color: burlywood;
 }
 
-.footer span,
+.footer div,
 .footer a {
-  margin: 0 20px;
-  font-size: 18px;
+  margin: 10px;
+  font-size: 16px;
 }
 
-.footer.dark span,
+.footer.dark div,
 .footer.dark a {
   color: white;
 }
 
-.footer.light span,
+.footer.light div,
 .footer.light a {
   color: black;
+}
+.footer-separator{
+  border-top: 1px solid #3a4553;
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+}
+.footer-separator-last{
+  border-top: 1px solid #3a4553;
+  margin: 0px !important;
+}
+.internationalization .languages{
+  color: black !important;
+  
+}
+.dark .internationalization .dropdown-menu{
+  background-color: #232F3E;
+}
+.light .internationalization .dropdown-menu{
+  background-color: #e6ae66;
+}
+
+.internationalization .dropdown-item{
+  margin: 0 5px 0 5px;
+  font-size: 14px;
+}
+.internationalization input{
+  width: 10%;
+}
+.subfooter{
+  padding: 30px 30px;
+}
+.dark .legals{
+  background-color: black;
+}
+.light .legals {
+  background-color: floralwhite;
+}
+
+.legals {
+  margin: 0px 0px !important;
+  padding-top: 20px;
+}
+.legals p{
+  margin: 0;
+  padding: 20px;
+}
+.made_in_india_logo{
+  height: 70px;
+  width: 100px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.sub-title{
+  font-size: larger;
+  font-weight: 600;
 }

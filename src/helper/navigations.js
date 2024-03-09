@@ -12,6 +12,7 @@ import OrderConfirmation from "../components/OrderConfirmation/OrderConfirmation
 import Orders from "../components/Orders/Orders";
 import AuthGuard from "../auth/AuthGuard";
 import LoginHandler from "./LoginHandler";
+import Profile from "../components/Profile/Profile";
 
 
 export const nav = [
@@ -26,6 +27,8 @@ export const nav = [
      { path: "/orderConfirm", element: <AuthGuard><OrderConfirmation /></AuthGuard>, shouldBeAuthenticated: true },
      { path: "/orders", element: <AuthGuard><Orders /></AuthGuard>, shouldBeAuthenticated: true },
      { path: "/login", element: <AuthGuard><LoginHandler /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/profile", element: <AuthGuard><Profile /></AuthGuard>, shouldBeAuthenticated: true },
+     { path: "/profile/orders", element: <AuthGuard><Orders /></AuthGuard>, shouldBeAuthenticated: true },
      { path: "*", element: <Navigate to="/comingSoon" />, shouldBeAuthenticated: false },
 ]
 

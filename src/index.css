@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-.minHeight {
-  height: 42rem;
-}
+/* .minHeight {
+  height: 17.9rem;
+} */
 
 .errorMessage {
   color: red;
@@ -22,4 +22,13 @@ code {
 
 .requiredFeild {
   color: red;
+}
+.react-multiple-carousel__arrow{
+  height: 50%;
+}
+.react-multiple-carousel__arrow--left{
+  left: 0px !important;
+}
+.react-multiple-carousel__arrow--right {
+  right: 0px !important;
 }

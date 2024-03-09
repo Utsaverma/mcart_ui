@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import './ItemsOnSale.css';
+
 import { getItemsonSale } from '../../services/productServices';
 import ProductPage from '../ProductPage/ProductPage';
 import { useDispatch } from 'react-redux';
 import { updateSaleProducts } from '../../reducers/productsSlice';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { CAROUSEL_RESPONSIVE } from '../../helper/utility';
+import './ItemsOnSale.css';
+
 
 const ItemsOnSale = ({ currentTheme }) => {
 
@@ -29,9 +34,19 @@ const ItemsOnSale = ({ currentTheme }) => {
       <div className="section-heading">Items on Sale</div>
       <div className="items-on-sale">
         <div className="sale-items">
-          {products.map((item) => (
-            <ProductPage className="sale-item" key={item['asin']} asin={item['asin']} view="saleItems" />
+          <Carousel  responsive={CAROUSEL_RESPONSIVE}
+            autoPlay={true}
+            swipeable={true}
+            draggable={true}
+            showDots={true}
+            infinite={true}
+            partialVisible={false}
+            dotListClass="custom-dot-list-style">
+          {
+            products.map((item) => (
+            <div><ProductPage className="sale-item" key={item['asin']} asin={item['asin']} view="saleItems" /></div>
           ))}
+          </Carousel>
         </div>
       </div>
     </div>

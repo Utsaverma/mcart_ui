@@ -1,5 +1,6 @@
 .Cart-page {
   padding: 20px;
+  overflow-y: auto;
 }
 
 .Cart-page .title {

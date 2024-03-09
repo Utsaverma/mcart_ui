@@ -34,6 +34,36 @@ export const INPUT_TYPE_MAPPING = {
   accountNumber: 'password'
 }
 
+export const CAROUSEL_RESPONSIVE = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 768 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 767, min: 464 },
+    items: 1
+  }
+};
+
+export const AVAILABLE_LANGUAGES =  [
+  "English - EN", 
+  "हिन्दी - HI - अनुवाद", 
+  "தமிழ் - TA - மொழிபெயர்ப்பு", 
+  "తెలుగు - TE - అనువాదం", 
+  "ಕನ್ನಡ - KN - ಭಾಷಾಂತರ", 
+  "മലയാളം - ML - വിവർത്തനം",
+  "বাংলা - BN - অনুবা",
+  "मराठी - MR - भाषांतर"
+]
+
 export const fetchCurrUserAttributes = async (updateUser) => {
   try {
     const { _, idToken } = (await fetchAuthSession()).tokens ?? {};
@@ -63,3 +93,4 @@ export const checkEmptyValues = (obj) => {
 export const checkAllEmptyValues = (obj) => {
   return Object.values(obj).every(value => value === '');
 };
+

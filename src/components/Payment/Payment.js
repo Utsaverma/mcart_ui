@@ -54,14 +54,14 @@ export const Payment = () => {
 
     };
     return (
-        <div className="paymentsContainer">
+        <div className="paymentsContainer minHeight">
             <CartAddressSummary cartItems={cartItems} />
             <br />
             <div>
                 <h2>Please complete payment of ${calculateTotalAmount().toFixed(2)} using any of the below options:</h2>
                 <br />
                 <Row className="paymentContainer">
-                    <Col>
+                    <Col className="paymentType-selection">
                         {
                             Object.entries(AVAILABLE_PAYMENT_OPTIONS).map(([key, value]) => (
                                 <div className="paymentContainer" key={key}>

@@ -13,10 +13,10 @@ const HomePage = () => {
   return (
     <div className="HomePage">
       <div className="content">
-        <div className="sidebar">
+        <div className="sub-content">
           <ItemsOnSale currentTheme={currentTheme} />
         </div>
-        <div className="main-content">
+        <div className="sub-content">
           <FeaturedProducts currentTheme={currentTheme} />
         </div>
       </div>

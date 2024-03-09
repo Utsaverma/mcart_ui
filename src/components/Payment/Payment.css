@@ -1,5 +1,9 @@
 .paymentsContainer {
-    height: 43rem;
+    /* overflow-y: auto; */
+    overflow-x: hidden;
+}
+.paymentType-selection{
+    margin-bottom: 5%;
 }
 
 .paymentContainer {
@@ -43,6 +47,7 @@
 
 .cart-address-details {
     margin-right: 0px;
+    width: 99%;
 }
 
 .shippinglabel {
