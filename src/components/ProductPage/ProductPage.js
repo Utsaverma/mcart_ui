@@ -205,7 +205,7 @@ const ProductPage = ({ asin, view }) => {
                 <button onClick={incrementCounter}>+</button>
               </div>
           }
-          <span className='comparison_icon' title="compare with other products"><FontAwesomeIcon icon={faLessThan} size='2x' onClick={()=>{}}/><FontAwesomeIcon icon={faGreaterThan} size='2x' onClick={()=>{}} /></span>
+          <span className='comparison_icon' title="compare with other products"><FontAwesomeIcon icon={faLessThan} size='2x' onClick={()=>{}}/>&nbsp;<FontAwesomeIcon icon={faGreaterThan} size='2x' onClick={()=>{}} /></span>
         </div>
         }
 

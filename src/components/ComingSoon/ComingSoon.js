@@ -5,7 +5,8 @@ const ComingSoon = () => {
 
   return (
     <div className="ComingSoon-page minHeight">
-      <h2>Coming Soon</h2>
+      <h2>This feature will be enabled soon</h2>
+      <h2>Thanks for you co-operation!! </h2>
     </div>
   );
 }

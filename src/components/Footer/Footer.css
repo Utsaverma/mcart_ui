@@ -52,6 +52,12 @@
 .light .internationalization .dropdown-menu{
   background-color: #e6ae66;
 }
+.dark .internationalization .dropdown-item:hover{
+  background-color: #5c6a7a;
+}
+.ligh .internationalization .dropdown-item:hover{
+  background-color: #af987a;
+}
 
 .internationalization .dropdown-item{
   margin: 0 5px 0 5px;

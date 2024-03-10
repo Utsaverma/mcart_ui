@@ -19,7 +19,7 @@ const Footer = () => {
       <Row className='subfooter'>
         <Col></Col>
         <Col>
-          <div class="sub-title">Get To Know Us</div>
+          <div class="sub-title">Get to Know Us</div>
           <div><a href="/about">About Us</a></div>
           <div><a href="/career">Careers</a></div>
           <div><a href="/press_releases">Press Releases</a></div>
@@ -37,21 +37,21 @@ const Footer = () => {
         </Col>
         <Col>
         <div class="sub-title">Make Money with Us</div>
-        <div><a href="/#">Sell on Mcart</a></div>
-        <div><a href="/#">Sell under Mcart Accelerator</a></div>
-        <div><a href="/#">Protect and Build Your Brand</a></div>
-        <div><a href="/#">Become an Affiliate</a></div>
-        <div><a href="/#">Fulfilment by Mcart</a></div>
-        <div><a href="/#">Advertise Your Products</a></div>
-        <div><a href="/#">Protect and Build Your Brand</a></div>
+        <div><a href="https://sellers.mcart.shop" target='_blank' rel="noreferrer">Sell on Mcart</a></div>
+        <div><a href="https://sellers.accelerator.mcart.shop" target='_blank' rel="noreferrer">Sell under Mcart Accelerator</a></div>
+        <div><a href="https://build.brand.mcart.shop" target='_blank' rel="noreferrer">Protect and Build Your Brand</a></div>
+        <div><a href="https://partners.mcart.shop" target='_blank' rel="noreferrer">Become an Affiliate</a></div>
+        <div><a href="https://fulfilments.mcart.shop" target='_blank' rel="noreferrer">Fulfilment by Mcart</a></div>
+        <div><a href="https://advertisements.mcart.shop" target='_blank' rel="noreferrer">Advertise Your Products</a></div>
         
         </Col>
         <Col>
-          <div class="sub-title">Let Us Help You</div>
-          <div><a href="/account">Your Account</a></div>
-          <div><a href="/return_center">Return Center</a></div>
-          <div><a href="/app_download">Mcart App Download</a></div>
-          <div><a href="/help">Help</a></div>
+          <div class="sub-title">Let us Help You</div>
+          <div><a href="https://accounts.mcart.shop" target='_blank' rel="noreferrer">Your Account</a></div>
+          <div><a href="https://returns.mcart.shop" target='_blank' rel="noreferrer">Return Center</a></div>
+          <div><a href="https://app.mcart.shop" target='_blank' rel="noreferrer">Mcart App Download</a></div>
+          <div><a href="https://feedbacks.mcart.shop" target='_blank' rel="noreferrer">Feedback </a></div>
+          <div><a href="https://support.mcart.shop" target='_blank' rel="noreferrer">Help</a></div>
         </Col>
         <Col></Col>
       </Row>
