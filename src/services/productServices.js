@@ -1,13 +1,12 @@
 import { MOCKED_DATA } from "./mocked_data";
 import { MOCK } from "./config";
 
-const BASE_URL = 'http://localhost:5000/mcart/v1/products';
-// const BASE_URL = 'https://api.mcart.shop/mcart/v1/products';
+const BASE_URL = MOCK ? 'http://localhost:5000/mcart/v1/products' : 'https://api.mcart.shop/mcart/v1/products';
 
 export const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3;
 
 export const DEFAULT_START_INDEX = 0
-export const DEFAULT_SIZE = 10
+export const DEFAULT_SIZE = 30
 
 export const getProductById = async (id) => {
     if (MOCK) {
@@ -139,10 +138,10 @@ export const getItemsonSale = async () => {
 
 export const getItemsfeatured = async () => {
     if (MOCK) {
-        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
+        return MOCKED_DATA.slice(0,10);
     }
     else {
         // call api
-        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
+        return MOCKED_DATA.slice(0,10);
     }
 }
