@@ -19,7 +19,7 @@ const Footer = () => {
       <Row className='subfooter'>
         <Col></Col>
         <Col>
-          <div class="sub-title">Get to Know Us</div>
+          <div className="sub-title">Get to Know Us</div>
           <div><a href="/about">About Us</a></div>
           <div><a href="/career">Careers</a></div>
           <div><a href="/press_releases">Press Releases</a></div>
@@ -29,14 +29,14 @@ const Footer = () => {
           
         </Col>
         <Col>
-        <div class="sub-title">Connect With Us</div>
+        <div className="sub-title">Connect With Us</div>
         <div><a href="https://www.facebook.com/mcartdotshop" target='_blank' rel="noreferrer">Facebook</a></div>
         <div><a href="https://twitter.com/mcartdotshop" target='_blank' rel="noreferrer">X (formerly twitter)</a></div>
         <div><a href="https://www.instagram.com/mcart.shop" target='_blank' rel="noreferrer">Instagram</a></div>
         
         </Col>
         <Col>
-        <div class="sub-title">Make Money with Us</div>
+        <div className="sub-title">Make Money with Us</div>
         <div><a href="https://sellers.mcart.shop" target='_blank' rel="noreferrer">Sell on Mcart</a></div>
         <div><a href="https://sellers.accelerator.mcart.shop" target='_blank' rel="noreferrer">Sell under Mcart Accelerator</a></div>
         <div><a href="https://build.brand.mcart.shop" target='_blank' rel="noreferrer">Protect and Build Your Brand</a></div>
@@ -46,7 +46,7 @@ const Footer = () => {
         
         </Col>
         <Col>
-          <div class="sub-title">Let us Help You</div>
+          <div className="sub-title">Let us Help You</div>
           <div><a href="https://accounts.mcart.shop" target='_blank' rel="noreferrer">Your Account</a></div>
           <div><a href="https://returns.mcart.shop" target='_blank' rel="noreferrer">Return Center</a></div>
           <div><a href="https://app.mcart.shop" target='_blank' rel="noreferrer">Mcart App Download</a></div>
@@ -59,7 +59,7 @@ const Footer = () => {
       <Row className='subfooter'>
         <Col>
           <span><img src="../../../mcart_logo.png" alt="mcart logo" className="mcart_logo" /></span>
-          <span class="internationalization">
+          <span className="internationalization">
             <DropdownButton
             as={ButtonGroup}
             id="dropdown-variants-secondary"
@@ -69,7 +69,7 @@ const Footer = () => {
             >
               {
                 AVAILABLE_LANGUAGES.map((val, index)=>(
-                  <Dropdown.Item eventKey={index + 1} key={index} class="languages" onClick={()=>handleLanguageChange(val)}>
+                  <Dropdown.Item eventKey={index + 1} key={index} className="languages" onClick={()=>handleLanguageChange(val)}>
                     <input
                       className="languageSelection"
                       type="radio"

@@ -25,7 +25,7 @@ const Header = () => {
         <Link to="/category" className='header_links'>Category </Link>
       </div>
       <div className="center-section">
-        <span className="mcartTitle">Welcome to Mcart 2.0</span>
+        <span className="mcartTitle">Welcome to Mcart</span>
         <Search />
       </div>
       <div className="right-section">

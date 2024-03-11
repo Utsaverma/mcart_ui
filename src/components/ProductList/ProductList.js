@@ -62,6 +62,7 @@ const ProductList = ({ source, category }) => {
     setAbortController(newAbortController);
 
     const data = await getProductsByTitle(value, newAbortController, startIndex, filters);
+    // const data = await getProductsByTitle(value, startIndex, filters);
     if (data) {
       if (init === true) {
         dispatch(updateProducts(data));

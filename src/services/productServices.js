@@ -1,7 +1,7 @@
 import { MOCKED_DATA } from "./mocked_data";
-import { MOCK } from "./config";
+import { LOCAL, MOCK } from "./config";
 
-const BASE_URL = MOCK ? 'http://localhost:5000/mcart/v1/products' : 'https://api.mcart.shop/mcart/v1/products';
+const BASE_URL = LOCAL ? 'http://localhost:5000/mcart/v1/products' : 'https://api.mcart.shop/mcart/v1/products';
 
 export const NUMBER_OF_ELEMENTS_AT_EACH_ROW = 3;
 
@@ -27,6 +27,48 @@ export const getProductById = async (id) => {
     }
 
 };
+
+const debounce = async (fn, delay = 1000) => { 
+    let timerId = null; 
+    return (...args) => { 
+        clearTimeout(timerId); 
+        timerId = setTimeout(() => fn(...args), delay); 
+    }; 
+};
+
+
+
+export  const getProductsByTitleUtil = async (value, startIndex = DEFAULT_START_INDEX, filters = {}) => {
+    console.log(value)
+    if (MOCK) {
+        return MOCKED_DATA
+    }
+    else {
+        if (value) {
+            const response = await fetch(`${BASE_URL}/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    key: value,
+                    size: DEFAULT_SIZE,
+                    start: startIndex,
+                    filters: filters
+                })
+            });
+            const data = await response.json();
+            return data;
+        }
+        else {
+            return null;
+        }
+    }
+
+};
+
+export  const getProductsByTitleNew =  await debounce(getProductsByTitleUtil, 500); 
+
 
 export const getProductsByTitle = async (value, abortController, startIndex = DEFAULT_START_INDEX, filters = {}) => {
     if (MOCK) {
@@ -138,10 +180,10 @@ export const getItemsonSale = async () => {
 
 export const getItemsfeatured = async () => {
     if (MOCK) {
-        return MOCKED_DATA.slice(0,10);
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
     else {
         // call api
-        return MOCKED_DATA.slice(0,10);
+        return MOCKED_DATA.slice(0,DEFAULT_SIZE);
     }
 }

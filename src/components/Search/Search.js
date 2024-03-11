@@ -36,6 +36,7 @@ export const Search = () => {
     setAbortController(newAbortController);
 
     const data = await getProductsByTitle(value, newAbortController);
+    // const data = await getProductsByTitle(value);
 
     if (data) {
       dispatch(ProductUpdate(data));
