@@ -1,2 +1,2 @@
-export const MOCK = false;
+export const MOCK = true;
 export const LOCAL = false;
