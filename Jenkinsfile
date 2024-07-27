@@ -10,7 +10,7 @@ pipeline {
       CI = false
       NODE_VERSION = '14.17.5'
       AWS_DEFAULT_REGION = 'ap-south-1'
-      DISTRIBUTION_ID = 'E3PUAOKDY25P8H'
+      DISTRIBUTION_ID = '<DISTRIBUTION_ID>'
     }
 
   stages {
