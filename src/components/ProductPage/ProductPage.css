@@ -1,0 +1,132 @@
+/* ProductPage.css */
+.routedComponent {
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.products-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.product-details-container {
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 30rem;
+  min-width: 30rem;
+  width: 100%;
+  min-height: 100%;
+  background-color: #fff;
+}
+
+.product-details-container .product_images {
+  max-width: 100%;
+  min-height: 9rem;
+  width: 220px;
+  margin-bottom: 20px;
+  aspect-ratio: 4/5;
+  object-fit: contain;
+}
+
+.product-details-container h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-details-container p {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.product-details-container button {
+  background-color: #f90;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+.amazon_logo{
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  height: 25px;
+}
+
+.product-details-container button:hover {
+  background-color: #e08000;
+}
+
+.stars {
+  color: #f90;
+  margin-bottom: 10px;
+}
+
+.stars svg {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.best-seller {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.best-seller svg {
+  color: #ffbb00;
+  /* Crown color */
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.best-seller span {
+  color: #ffbb00;
+  font-weight: bold;
+}
+
+.listedPrice {
+  text-decoration: line-through;
+}
+
+.quantitySelection {
+  display: inline-flex;
+  align-items: center;
+}
+
+.quantityDisp {
+  margin: 10px;
+}
+
+.onsale-badge {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  float: right;
+  position: relative;
+  top: -30px;
+}
+
+.itemAddedToCart, .itemAddedToWishlist {
+  position: absolute;
+  top: 10px;
+  right: 20%;
+  overflow-wrap: break-word;
+  width: max-content !important;
+  background-color: green !important;
+}
+.wishlist_icon{
+  margin-right: 5%;
+  cursor: pointer;
+}
+.comparison_icon{
+  margin-left: 5%;
+  cursor: pointer;
+}

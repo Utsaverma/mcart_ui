@@ -1,0 +1,44 @@
+/* Hide default scrollbar */
+.featured-products-container {
+  margin-top: 1%;
+}
+
+.featured-products-container.dark {
+  background-color: darkgray;
+}
+
+.featured-products-container.light {
+  background-color: bisque;
+  color: black;
+}
+
+.featured-products {
+  overflow-x: auto;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+
+.section-heading {
+  font-size: 22px;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%;
+  /* Take full width */
+  z-index: 1;
+}
+
+
+.featured-item {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  width: 30%;
+  /* Adjust the width of each item as needed */
+  vertical-align: top;
+}
+
+.featured-item img {
+  width: 100%;
+}

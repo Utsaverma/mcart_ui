@@ -1,0 +1,14 @@
+.theme-icon {
+    font-size: x-large;
+    margin-left: 1rem;
+    aspect-ratio: 3/2;
+    cursor: pointer;
+}
+
+.fa-sun.theme-icon {
+    color: black;
+}
+
+.fa-moon.theme-icon {
+    color: white;
+}

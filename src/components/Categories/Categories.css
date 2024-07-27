@@ -1,0 +1,37 @@
+.grouped-dropdown {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.gender-list,
+.category-list,
+.sub-category-list {
+  list-style: none;
+  /* margin-left: none; */
+}
+
+.sub-category-list {
+  padding-left: 0px;
+  margin-left: 40px;
+  text-decoration: underline;
+  cursor: pointer;
+  ;
+}
+
+.category-list {
+  padding-left: 0px;
+  margin-left: 20px;
+}
+
+.gender-list {
+  padding-left: 0px;
+}
+
+.categoryMainConatiner {
+  overflow-y: auto;
+}
+
+.grouped-dropdown li {
+  cursor: pointer;
+}

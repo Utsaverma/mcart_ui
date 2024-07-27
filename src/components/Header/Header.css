@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+
+}
+
+.header.dark {
+  background-color: #232F3E;
+}
+
+.header.light {
+  background-color: burlywood;
+}
+
+.left-section,
+.right-section {
+  /* Adjust styles for left and right sections */
+  /* width:auto; */
+  display: contents;
+}
+
+.center-section {
+  flex: 1;
+  /* Adjust styles for center section */
+}
+
+/* Update the input width */
+.center-section input[type="text"] {
+  width: 80%;
+  /* Adjust the width as desired */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* Add any other styles you need */
+}
+
+.center-section button {
+  /* Add styles for the search button */
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Add any other styles you need */
+}
+
+.cart-count {
+  color: crimson;
+  font-weight: 700;
+  font-size: 20px;
+  position: absolute;
+  margin-left: -10px;
+  margin-top: -18px;
+}
+
+.right-section a:not(:first-child) {
+  margin: 0 10px;
+}
+
+.mcartTitle {
+  font-size: xxx-large;
+  font-weight: 700;
+  color: white;
+}
+
+.mcart_logo {
+  height: 70px;
+  width: 120px;
+  border-radius: 10px;
+}
+
+.header_links {
+  text-decoration: auto;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
+.dark .header_links,
+.dark .mcartTitle,
+.dark .user-details {
+  color: white;
+
+}
+
+
+.light .header_links,
+.light .mcartTitle,
+.light .user-details {
+  color: black;
+}

@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* .minHeight {
+  height: 17.9rem;
+} */
+
+.errorMessage {
+  color: red;
+}
+
+.requiredFeild {
+  color: red;
+}
+.react-multiple-carousel__arrow{
+  height: 50%;
+}
+.react-multiple-carousel__arrow--left{
+  left: 0px !important;
+}
+.react-multiple-carousel__arrow--right {
+  right: 0px !important;
+}
+.largeText{
+  font-size: large;
+  font-weight: 600;
+}
+.crossedText{
+  text-decoration: line-through;
+}

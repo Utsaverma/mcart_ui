@@ -1,0 +1,41 @@
+.items-on-sale-container {
+  margin-top: 1%;
+}
+
+.items-on-sale-container.dark {
+  background-color: darkgray;
+}
+
+.items-on-sale-container.light {
+  background-color: bisque;
+  color: black;
+}
+
+.section-heading {
+  font-size: 22px;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%;
+  /* Take full width */
+  z-index: 1;
+}
+
+
+.sale-item {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  width: 30%;
+  /* Adjust the width of each item as needed */
+  vertical-align: top;
+}
+
+.sale-item img {
+  width: 100%;
+  /* Make sure images fill their container */
+}
+
+.item-details {
+  padding: 10px;
+}
